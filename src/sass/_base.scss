@@ -1,37 +1,22 @@
-// $color-primary: #f59a83;
-// $color-primary: #f38e82;
-// $color-grad-1: #fbdb89;
-// $color-grad-2: #f48982;
-
-// $color-grey-light-1: #f9f5f3; // Light background
-// $color-grey-light-2: #f2efee; // Light lines
-// $color-grey-light-3: #d3c7c3; // Light text (placeholder)
-// $color-grey-dark-1: #615551; // Normal text
-// $color-grey-dark-2: #918581; // Lighter text
-
-// $gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
-
-// $color-primary: #5A9E6F;  // Leaf Green
-// $color-grad-1: #A8E6CF;   // Mint Green
-// $color-grad-2: #FFDD94;   // Soft Yellow
-
-// $color-grey-light-1: #FAF9F6; // Light background
-// $color-grey-light-2: #E6E4E1; // Light lines
-// $color-grey-light-3: #B8B5B0; // Light text (placeholder)
-// $color-grey-dark-1: #2F4858;  // Normal text (Deep Blue-Gray)
-// $color-grey-dark-2: #6C757D;  // Lighter text
-
-// $gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
-
 $color-primary: #ff6f61; // Tomato Red
 $color-grad-1: #ffd166; // Golden Yellow
 $color-grad-2: #ff9f1c; // Warm Orange
 
-$color-grey-light-1: #fff8e1; // Soft Cream (Background)
+$color-background: #fff8e1; // Soft Cream (Background)
 $color-grey-light-2: #f5e6c8; // Light lines (Adjusted for contrast)
 $color-grey-light-3: #d3c7c3; // Placeholder Text
 $color-grey-dark-1: #333333; // Dark Gray (Normal Text)
 $color-grey-dark-2: #555555; // Lighter Gray Text
+
+// $color-primary: #ff6f61; // Tomato Red (unchanged - still works as an accent)
+// $color-grad-1: #ffd166; // Golden Yellow (unchanged - good for gradient accents)
+// $color-grad-2: #ff9f1c; // Warm Orange (unchanged - complements the dark theme)
+
+// $color-grey-dark-1: #1a1a1a; // Very Dark Gray (Background)
+// $color-grey-dark-2: #2d2d2d; // Slightly Lighter Gray (Card backgrounds or sections)
+// $color-background: #e0d8c3; // Soft Cream (Primary Text)
+// $color-grey-light-2: #b0a28e; // Muted Light Beige (Secondary Text or lines)
+// $color-grey-light-3: #7a6f5e; // Darker Beige (Placeholder Text)
 
 $gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
 
@@ -93,3 +78,48 @@ body {
     border-radius: 0;
   }
 }
+
+// // Dark mode variables
+// $color-dark-bg: #121212; // Dark background
+// $color-dark-text: #e0e0e0; // Light text
+// $color-dark-lines: #333333; // Dark lines
+
+// // Add dark mode styles
+// body.dark-mode {
+//   background-color: $color-dark-bg;
+//   color: $color-dark-text;
+//   background-image: none;
+
+//   .container {
+//     background-color: $color-dark-lines;
+//     box-shadow: 0 2rem 6rem 0.5rem rgba($color-dark-text, 0.2);
+//   }
+// }
+
+// // Add styles for the dark mode toggle button
+// .header {
+//   grid-area: head;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 1rem 2rem;
+//   background-color: $color-background;
+
+//   @media only screen and (max-width: $bp-large) {
+//     padding: 1rem;
+//   }
+
+//   .dark-mode-toggle {
+//     background-color: $color-primary;
+//     color: #fff;
+//     border: none;
+//     border-radius: 5px;
+//     padding: 0.5rem 1rem;
+//     cursor: pointer;
+//     font-size: 1.4rem;
+
+//     &:hover {
+//       background-color: darken($color-primary, 10%);
+//     }
+//   }
+// }

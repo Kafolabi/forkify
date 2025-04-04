@@ -230,10 +230,8 @@ body {
 }
 
 .message, .error {
-  max-width: 40rem;
   margin: 0 auto;
   padding: 5rem 4rem;
-  display: flex;
 }
 
 .message svg, .error svg {
@@ -243,11 +241,49 @@ body {
   transform: translateY(-.3rem);
 }
 
+.message img, .error img {
+  color: #ff6f61;
+  width: 5rem;
+  height: 5rem;
+}
+
 .message p, .error p {
+  opacity: .8;
   margin-left: 1.5rem;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  line-height: 1.5;
+}
+
+.message .cards, .error .cards {
+  display: flex;
+}
+
+.message .card, .error .card {
+  text-align: center;
+  background-color: #ffefcf;
+  border-radius: 1rem;
+  flex: 50%;
+  margin: 3rem 3.5rem;
+  padding: 3rem 2.5rem;
+  line-height: 2.9rem;
+  transition: all .3s;
+  box-shadow: .8rem 1.5rem 2rem #0000001a;
+}
+
+.message .card:hover, .error .card:hover {
+  transform: translateY(-1rem)scale(1.03);
+}
+
+.message .card__header, .error .card__header {
+  padding-bottom: 1rem;
+  line-height: 2.5rem;
+  opacity: 1 !important;
+}
+
+.message svg, .error svg {
+  width: 5rem;
+  height: 5rem;
+  margin-bottom: 1rem;
 }
 
 .header {
@@ -265,7 +301,7 @@ body {
 }
 
 .search {
-  background-color: #fff;
+  background-color: #ffefcf;
   border-radius: 10rem;
   align-items: center;
   padding-left: 3rem;
