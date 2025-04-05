@@ -1,12 +1,11 @@
 .recipe {
-  background-color: $color-background;
+  background-color: var(--color-grey--1);
 
   ///////////
   // FIGURE
   &__fig {
     height: 32rem;
     position: relative;
-    // transform: scale(1.04) translateY(-1px);
     transform-origin: top;
 
     &::before {
@@ -19,8 +18,8 @@
       left: 0;
       background-image: linear-gradient(
         to right bottom,
-        $color-grad-1,
-        $color-grad-2
+        var(--color-grad-1),
+        var(--color-grad-2)
       );
       opacity: 0.6;
     }
@@ -52,8 +51,8 @@
       padding: 1.3rem 2rem;
       background-image: linear-gradient(
         to right bottom,
-        $color-grad-1,
-        $color-grad-2
+        var(--color-grad-1),
+        var(--color-grad-2)
       );
     }
 
@@ -84,7 +83,7 @@
   &__info-icon {
     height: 2.35rem;
     width: 2.35rem;
-    fill: $color-primary;
+    fill: var(--color-primary);
     margin-right: 1.15rem;
   }
 
@@ -100,8 +99,6 @@
   }
 
   &__user-generated {
-    background-color: darken($color-grey-light-2, 2%);
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -115,7 +112,7 @@
     svg {
       height: 2.25rem;
       width: 2.25rem;
-      fill: $color-primary;
+      fill: var(--color-primary);
     }
   }
 
@@ -125,7 +122,6 @@
     padding: 5rem 8rem;
     font-size: 1.6rem;
     line-height: 1.4;
-    background-color: $color-grey-light-2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -145,7 +141,7 @@
   &__icon {
     height: 2rem;
     width: 2rem;
-    fill: $color-primary;
+    fill: var(--color-primary);
     margin-right: 1.1rem;
     flex: 0 0 auto;
     margin-top: 0.1rem;
@@ -170,7 +166,7 @@
     font-size: 1.7rem;
     text-align: center;
     margin-bottom: 3.5rem;
-    color: $color-grey-dark-2;
+    color: var(--color-text-2);
   }
 
   &__publisher {

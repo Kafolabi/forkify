@@ -1,6 +1,6 @@
 .header {
   grid-area: head;
-  background-color: $color-background;
+  background-color: var(--color-grey--1);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,7 +13,7 @@
 }
 
 .search {
-  background-color: #ffefcf;
+  background-color: var(--color-grey--2);
   border-radius: 10rem;
   display: flex;
   align-items: center;
@@ -22,7 +22,7 @@
 
   &:focus-within {
     transform: translateY(-2px);
-    box-shadow: 0 0.7rem 3rem rgba($color-grey-dark-1, 0.08);
+    box-shadow: 0 0.7rem 3rem rgba(var(--color-text-1), 0.08);
   }
 
   &__field {
@@ -38,14 +38,14 @@
     }
 
     &::placeholder {
-      color: $color-grey-light-3;
+      color: var(--color-text-3);
     }
 
     @media only screen and (max-width: $bp-medium) {
       width: auto;
 
       &::placeholder {
-        color: white;
+        color: var(--color-text-3);
       }
     }
   }
@@ -53,6 +53,7 @@
   &__btn {
     font-weight: 600;
     font-family: inherit;
+    color: var(--color-on-primary);
   }
 }
 
@@ -89,7 +90,7 @@
     svg {
       height: 2.4rem;
       width: 2.4rem;
-      fill: $color-primary;
+      fill: var(--color-primary);
       margin-right: 0.7rem;
       transform: translateY(-1px);
     }
@@ -99,7 +100,72 @@
     }
 
     &:hover {
-      background-color: $color-grey-light-2;
+      background-color: var(--color-grey--2);
+    }
+  }
+}
+
+// Toggle dark mode
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 85px;
+  height: 43px;
+  margin-top: 3.1rem;
+  margin-right: 3rem;
+
+  i {
+    position: absolute;
+    top: 0.68rem;
+    right: 1.4rem;
+
+    font-size: 24px;
+    color: var(--color-text-3);
+  }
+
+  .i__right {
+    right: 1.4rem;
+  }
+
+  .i__left {
+    left: 1rem !important;
+  }
+
+  &__input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .toggle__slider {
+      background-color: var(--color-grey--2);
+
+      &::before {
+        transform: translateX(43px);
+      }
+    }
+  }
+
+  &__slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: var(--color-grey--2);
+    border-radius: 34px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: background-color 0.3s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 30px;
+      width: 29px;
+      left: 4px;
+      top: 0.48rem;
+      background: var(--gradient);
+      border-radius: 50%;
+      transition: transform 0.3s;
     }
   }
 }
@@ -107,12 +173,11 @@
 .bookmarks {
   padding: 1rem 0;
   position: absolute;
-  // right: 0;
   right: -2.5rem;
   z-index: 10;
   width: 40rem;
-  background-color: #fff;
-  box-shadow: 0 0.8rem 5rem 2rem rgba($color-grey-dark-1, 0.1);
+  background-color: var(--color-grey--1);
+  box-shadow: 0 0.8rem 5rem 2rem rgba(var(--color-text-1), 0.1);
 
   visibility: hidden;
   opacity: 0;
@@ -132,7 +197,7 @@
     transition: all 0.3s;
 
     &:hover {
-      background-color: $color-grey-light-2;
+      background-color: var(--color-background);
     }
   }
 
@@ -140,5 +205,6 @@
   .nav__btn--bookmarks:hover + & {
     visibility: visible;
     opacity: 1;
+    background-color: var(--color-grey--2);
   }
 }

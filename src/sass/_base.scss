@@ -1,29 +1,101 @@
-$color-primary: #ff6f61; // Tomato Red
-$color-grad-1: #ffd166; // Golden Yellow
-$color-grad-2: #ff9f1c; // Warm Orange
-
-$color-background: #fff8e1; // Soft Cream (Background)
-$color-grey-light-2: #f5e6c8; // Light lines (Adjusted for contrast)
-$color-grey-light-3: #d3c7c3; // Placeholder Text
-$color-grey-dark-1: #333333; // Dark Gray (Normal Text)
-$color-grey-dark-2: #555555; // Lighter Gray Text
-
-// $color-primary: #ff6f61; // Tomato Red (unchanged - still works as an accent)
-// $color-grad-1: #ffd166; // Golden Yellow (unchanged - good for gradient accents)
-// $color-grad-2: #ff9f1c; // Warm Orange (unchanged - complements the dark theme)
-
-// $color-grey-dark-1: #1a1a1a; // Very Dark Gray (Background)
-// $color-grey-dark-2: #2d2d2d; // Slightly Lighter Gray (Card backgrounds or sections)
-// $color-background: #e0d8c3; // Soft Cream (Primary Text)
-// $color-grey-light-2: #b0a28e; // Muted Light Beige (Secondary Text or lines)
-// $color-grey-light-3: #7a6f5e; // Darker Beige (Placeholder Text)
-
-$gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
-
 $bp-large: 78.15em; // 1250px
 $bp-medium: 61.25em; // 980px
 $bp-small: 37.5em; // 600px
 $bp-smallest: 31.25em; // 500px
+
+:root {
+  --color-primary: #ff6f61; /* Tomato Red */
+  --color-wrapper: #ffd166; /* Golden Yellow */
+  --color-grad-2: #ff9f1c; /* Warm Orange */
+  --color-grad-1: #ffd166; /* Warm Orange */
+  --color-background: #fff;
+
+  --color-primary-variant: #ff922b;
+
+  --color-grey--1: #fff8e1; /* Soft Cream (Background) */
+  --color-grey--2: #ffefcf; /* Light Cream (Background) */
+
+  // --color-grey--1: red; /* Soft Cream (Background) */
+
+  --color-grey-light-2: #f5e6c8; /* Light lines (Adjusted for contrast) */
+
+  --color-text-3: #d3c7c3; /* Placeholder Text */
+  --color-text-1: #333333; /* Dark Gray (Normal Text) */
+  --color-text-2: #555555; /* Lighter Gray Text */
+
+  
+  --color-input-borders: #ddd;
+  --color-on-primary: #fff; /* White (On Primary Color) */
+  --gradient: linear-gradient(
+    to right bottom,
+    var(--color-grad-1),
+    var(--color-grad-2)
+  );
+  --wrapper-gradient: linear-gradient(
+    to right bottom,
+    var(--color-wrapper),
+    var(--color-grad-2)
+  );
+}
+
+[data-theme='dark'] {
+  --color-primary: #ffc078;
+  --color-wrapper: #121212;
+  --color-grad-2: #303030;
+
+  --color-grad-1: #303030;
+  --color-primary-variant: #ff922b;
+
+  --color-background: #303030;
+  --color-grey--1: #424242;
+  --color-grey--2: #383838;
+  --color-text--1: #ececec;
+  --color-text-2: #bec5c7;
+  --color-text--3: #989898;
+
+  --color-input-borders: #121212;
+  --color-on-primary: #000;
+  --gradient: linear-gradient(
+    to right bottom,
+    var(--color-primary-variant),
+    var(--color-primary-variant)
+  );
+  --wrapper-gradient: linear-gradient(
+    to right bottom,
+    var(--color-wrapper),
+    var(--color-wrapper)
+  );
+}
+
+.features__icon {
+  text-align: center;
+}
+*,
+:after,
+:before {
+  box-sizing: inherit;
+}
+* {
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s;
+}
+
+.section {
+  padding: 5rem 8rem 0;
+  margin-bottom: 6rem;
+  text-align: center;
+}
+body {
+  font-family: Nunito Sans, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-text--1);
+  background-image: var(--wrapper-gradient);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 8vw);
+}
 
 * {
   margin: 0;
@@ -49,8 +121,8 @@ body {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  color: $color-grey-dark-1;
-  background-image: $gradient;
+  color: var(--color-text--1);
+  background-image: var(--wrapper-gradient);
   background-size: cover;
   background-repeat: no-repeat;
   min-height: calc(100vh - 2 * 4vw);
@@ -60,10 +132,10 @@ body {
   max-width: 120rem;
   min-height: 117rem;
   margin: 4vw auto;
-  background-color: #fff;
+  background-color: var(--color-background);
   border-radius: 9px;
   overflow: hidden;
-  box-shadow: 0 2rem 6rem 0.5rem rgba($color-grey-dark-1, 0.2);
+  box-shadow: 0 2rem 6rem 0.5rem rgba(var(--color-text--1), 0.2);
 
   display: grid;
   grid-template-rows: 10rem minmax(100rem, auto);
@@ -78,48 +150,3 @@ body {
     border-radius: 0;
   }
 }
-
-// // Dark mode variables
-// $color-dark-bg: #121212; // Dark background
-// $color-dark-text: #e0e0e0; // Light text
-// $color-dark-lines: #333333; // Dark lines
-
-// // Add dark mode styles
-// body.dark-mode {
-//   background-color: $color-dark-bg;
-//   color: $color-dark-text;
-//   background-image: none;
-
-//   .container {
-//     background-color: $color-dark-lines;
-//     box-shadow: 0 2rem 6rem 0.5rem rgba($color-dark-text, 0.2);
-//   }
-// }
-
-// // Add styles for the dark mode toggle button
-// .header {
-//   grid-area: head;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   padding: 1rem 2rem;
-//   background-color: $color-background;
-
-//   @media only screen and (max-width: $bp-large) {
-//     padding: 1rem;
-//   }
-
-//   .dark-mode-toggle {
-//     background-color: $color-primary;
-//     color: #fff;
-//     border: none;
-//     border-radius: 5px;
-//     padding: 0.5rem 1rem;
-//     cursor: pointer;
-//     font-size: 1.4rem;
-
-//     &:hover {
-//       background-color: darken($color-primary, 10%);
-//     }
-//   }
-// }

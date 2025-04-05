@@ -4,7 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100rem;
-  background-color: white;
+  background-color: var(--color-grey--2);
   border-radius: 9px;
 
   padding: 5rem 6rem;
@@ -56,7 +56,7 @@
     & label {
       font-size: 1.5rem;
       font-weight: 600;
-      color: inherit;
+      color: var(--color-text--1);
     }
 
     & input {
@@ -65,15 +65,16 @@
       border: 1px solid #ddd;
       border-radius: 0.5rem;
       transition: all 0.2s;
+      background-color: var(--color-grey--1);
 
       &::placeholder {
-        color: $color-grey-light-3;
+        color: var(--color-text--3);
       }
 
       &:focus {
         outline: none;
-        border: 1px solid $color-primary;
-        background-color: $color-background;
+        border: 1px solid var(--color-input-borders);
+        background-color: var(--color-grey--1);
       }
     }
 

@@ -6,6 +6,8 @@ import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
+import ThemeToggle from './views/toggler.js';
+import { toggleSelector } from './views/toggler.js';
 
 import 'core-js/stable';
 import { async } from 'regenerator-runtime';
@@ -126,6 +128,8 @@ const controlAddRecipe = async function (newRecipe) {
 };
 
 const init = function () {
+  new ThemeToggle(toggleSelector);
+
   bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);

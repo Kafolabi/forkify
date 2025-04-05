@@ -612,6 +612,8 @@ var _bookmarksViewJs = require("./views/bookmarksView.js");
 var _bookmarksViewJsDefault = parcelHelpers.interopDefault(_bookmarksViewJs);
 var _addRecipeViewJs = require("./views/addRecipeView.js");
 var _addRecipeViewJsDefault = parcelHelpers.interopDefault(_addRecipeViewJs);
+var _togglerJs = require("./views/toggler.js");
+var _togglerJsDefault = parcelHelpers.interopDefault(_togglerJs);
 var _regeneratorRuntime = require("regenerator-runtime");
 // https://forkify-api.herokuapp.com/v2
 ///////////////////////////////////////
@@ -702,6 +704,7 @@ const controlAddRecipe = async function(newRecipe) {
     }
 };
 const init = function() {
+    new (0, _togglerJsDefault.default)((0, _togglerJs.toggleSelector));
     (0, _bookmarksViewJsDefault.default).addHandlerRender(controlBookmarks);
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
     (0, _recipeViewJsDefault.default).addHandlerUpdateServings(controlServings);
@@ -712,7 +715,7 @@ const init = function() {
 };
 init();
 
-},{"core-js/modules/web.immediate.js":"49tUX","./model.js":"Y4A21","./config.js":"k5Hzs","./views/recipeView.js":"l60JC","./views/searchView.js":"9OQAM","./views/resultsView.js":"cSbZE","./views/paginationView.js":"6z7bi","./views/bookmarksView.js":"4Lqzq","./views/addRecipeView.js":"i6DNj","regenerator-runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"49tUX":[function(require,module,exports,__globalThis) {
+},{"core-js/modules/web.immediate.js":"49tUX","./model.js":"Y4A21","./config.js":"k5Hzs","./views/recipeView.js":"l60JC","./views/searchView.js":"9OQAM","./views/resultsView.js":"cSbZE","./views/paginationView.js":"6z7bi","./views/bookmarksView.js":"4Lqzq","./views/addRecipeView.js":"i6DNj","regenerator-runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/toggler.js":"dk1VK"}],"49tUX":[function(require,module,exports,__globalThis) {
 'use strict';
 // TODO: Remove this module from `core-js@4` since it's split to modules listed below
 require("52e9b3eefbbce1ed");
@@ -3349,6 +3352,69 @@ class AddRecipeView extends (0, _viewDefault.default) {
 }
 exports.default = new AddRecipeView();
 
-},{"./view":"bWlJ9","../../img/icons.svg":"cMpiy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["ik2hV","aenu9"], "aenu9", "parcelRequire94c2")
+},{"./view":"bWlJ9","../../img/icons.svg":"cMpiy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dk1VK":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "toggleSelector", ()=>toggleSelector);
+parcelHelpers.export(exports, "icon", ()=>icon);
+parcelHelpers.export(exports, "image", ()=>image);
+parcelHelpers.export(exports, "lightLogo", ()=>lightLogo);
+parcelHelpers.export(exports, "darkLogo", ()=>darkLogo);
+const toggleSelector = '#themeToggle';
+const icon = 'i';
+const image = '.header__logo';
+const lightLogo = new URL(require("6affc3096db3c89f")).href; // Update to use lightLogo
+const darkLogo = new URL(require("90ac09b8637c34cd")).href;
+class ThemeToggle {
+    constructor(toggleSelector){
+        this.toggle = document.querySelector(toggleSelector);
+        this.body = document.body;
+        this.icon = document.querySelector(icon);
+        this.image = document.querySelector(image);
+        this.init();
+    }
+    init() {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        this.body.setAttribute('data-theme', savedTheme);
+        this.toggle.checked = savedTheme === 'dark';
+        if (savedTheme === 'dark') {
+            this.icon.classList.add('i__left', 'fa-sun');
+            this.icon.classList.remove('i__right', 'fa-moon');
+            this.image.src = darkLogo; // Update to use darkLogo
+        } else {
+            this.icon.classList.add('i__right', 'fa-moon');
+            this.icon.classList.remove('i__left', 'fa-sun');
+            this.image.src = lightLogo; // Update to use lightLogo
+        }
+        console.log(this.icon.classList);
+        this.toggle.addEventListener('change', this.handleToggle.bind(this));
+    }
+    handleToggle() {
+        const theme = this.toggle.checked ? 'dark' : 'light';
+        if (this.icon) {
+            if (theme === 'dark') {
+                this.icon.classList.add('i__left', 'fa-sun');
+                this.icon.classList.remove('i__right', 'fa-moon');
+                this.image.src = darkLogo; // Update to use darkLogo
+            } else {
+                this.icon.classList.add('i__right', 'fa-moon');
+                this.icon.classList.remove('i__left', 'fa-sun');
+                this.image.src = lightLogo; // Update to use lightLogo
+            }
+        }
+        console.log(this.icon.classList);
+        this.body.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    }
+}
+exports.default = ThemeToggle;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","90ac09b8637c34cd":"95cDi","6affc3096db3c89f":"6yFMN"}],"95cDi":[function(require,module,exports,__globalThis) {
+module.exports = require("ae1aebeab663e4b1").getBundleURL('hWUTQ') + "forkify-light.3f29e0fd.png" + "?" + Date.now();
+
+},{"ae1aebeab663e4b1":"lgJ39"}],"6yFMN":[function(require,module,exports,__globalThis) {
+module.exports = require("380e79367ea987ed").getBundleURL('hWUTQ') + "logo.726d37a8.png" + "?" + Date.now();
+
+},{"380e79367ea987ed":"lgJ39"}]},["ik2hV","aenu9"], "aenu9", "parcelRequire94c2")
 
 //# sourceMappingURL=index.e37f48ea.js.map
