@@ -1,6 +1,6 @@
 import View from './view';
 import fracty from 'fracty';
-import icons from '../../../public/icons.svg';
+import icons from '/public/icons.svg';
 
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
