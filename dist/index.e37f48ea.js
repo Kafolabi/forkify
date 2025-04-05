@@ -2808,7 +2808,7 @@ var _view = require("./view");
 var _viewDefault = parcelHelpers.interopDefault(_view);
 var _fracty = require("fracty");
 var _fractyDefault = parcelHelpers.interopDefault(_fracty);
-var _iconsSvg = require("url:../../img/icons.svg");
+var _iconsSvg = require("../../../public/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class RecipeView extends (0, _viewDefault.default) {
     _parentElement = document.querySelector('.recipe');
@@ -2929,17 +2929,17 @@ class RecipeView extends (0, _viewDefault.default) {
 }
 exports.default = new RecipeView();
 
-},{"./view":"bWlJ9","fracty":"hJO4d","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bWlJ9":[function(require,module,exports,__globalThis) {
+},{"./view":"bWlJ9","fracty":"hJO4d","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../../public/icons.svg":"k5TWc"}],"bWlJ9":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _iconsSvg = require("url:../../img/icons.svg");
+var _iconsSvg = require("../../../public/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class View {
     _data;
     /**
    * Render the received object to the DOM
-   * @param {Object | Object[]} data The data to be rendered (e.g. recipe) 
-   * @param {boolean} [render=true] If false, create markup string instead of rendering to the DOM 
+   * @param {Object | Object[]} data The data to be rendered (e.g. recipe)
+   * @param {boolean} [render=true] If false, create markup string instead of rendering to the DOM
    * @returns {undefined | string} A markup string is returned if render=false
    * @this {Object} View instance
    * @author Kolade Afolabi
@@ -3013,10 +3013,10 @@ class View {
 }
 exports.default = View;
 
-},{"url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"loVOp":[function(require,module,exports,__globalThis) {
-module.exports = require("9bcc84ee5d265e38").getBundleURL('hWUTQ') + "icons.dfd7a6db.svg" + "?" + Date.now();
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../../public/icons.svg":"k5TWc"}],"k5TWc":[function(require,module,exports,__globalThis) {
+module.exports = require("f696b75f8cc10440").getBundleURL('hWUTQ') + "icons.da1231b6.svg" + "?" + Date.now();
 
-},{"9bcc84ee5d265e38":"lgJ39"}],"lgJ39":[function(require,module,exports,__globalThis) {
+},{"f696b75f8cc10440":"lgJ39"}],"lgJ39":[function(require,module,exports,__globalThis) {
 "use strict";
 var bundleURL = {};
 function getBundleURLCached(id) {
@@ -3190,7 +3190,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _view = require("./view");
 var _viewDefault = parcelHelpers.interopDefault(_view);
-var _iconsSvg = require("url:../../img/icons.svg");
+var _iconsSvg = require("../../../public/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class PreviewView extends (0, _viewDefault.default) {
     _parentElement = '';
@@ -3219,12 +3219,12 @@ class PreviewView extends (0, _viewDefault.default) {
 }
 exports.default = new PreviewView();
 
-},{"./view":"bWlJ9","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6z7bi":[function(require,module,exports,__globalThis) {
+},{"./view":"bWlJ9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../../public/icons.svg":"k5TWc"}],"6z7bi":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _view = require("./view");
 var _viewDefault = parcelHelpers.interopDefault(_view);
-var _iconsSvg = require("../../img/icons.svg");
+var _iconsSvg = require("../../../public/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class paginationView extends (0, _viewDefault.default) {
     _parentElement = document.querySelector('.pagination');
@@ -3285,10 +3285,7 @@ class paginationView extends (0, _viewDefault.default) {
 }
 exports.default = new paginationView();
 
-},{"./view":"bWlJ9","../../img/icons.svg":"cMpiy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cMpiy":[function(require,module,exports,__globalThis) {
-module.exports = require("17cff2908589362b").getBundleURL('hWUTQ') + "icons.21bad73c.svg" + "?" + Date.now();
-
-},{"17cff2908589362b":"lgJ39"}],"4Lqzq":[function(require,module,exports,__globalThis) {
+},{"./view":"bWlJ9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../../public/icons.svg":"k5TWc"}],"4Lqzq":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _view = require("./view");
@@ -3313,8 +3310,6 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _view = require("./view");
 var _viewDefault = parcelHelpers.interopDefault(_view);
-var _iconsSvg = require("../../img/icons.svg");
-var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class AddRecipeView extends (0, _viewDefault.default) {
     _parentElement = document.querySelector('.upload');
     _message = 'Recipe was successfully uploaded :)';
@@ -3352,7 +3347,7 @@ class AddRecipeView extends (0, _viewDefault.default) {
 }
 exports.default = new AddRecipeView();
 
-},{"./view":"bWlJ9","../../img/icons.svg":"cMpiy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dk1VK":[function(require,module,exports,__globalThis) {
+},{"./view":"bWlJ9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dk1VK":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "toggleSelector", ()=>toggleSelector);
