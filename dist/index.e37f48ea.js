@@ -3504,7 +3504,7 @@ class CardView {
             return `<div class="card">
               <div>
                 <svg>
-                  <use href="${0, _iconsSvgDefault.default}#${card.icon}"></use>
+                  <use href="/public/icons.svg#${card.icon}"></use>
                 </svg>
               </div>
               <h2 class="card__header">${card.title}</h2>
@@ -3523,6 +3523,6 @@ class CardView {
 }
 exports.default = new CardView();
 
-},{"/public/icons.svg":"k5TWc","./view":"bWlJ9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["ik2hV","aenu9"], "aenu9", "parcelRequire94c2")
+},{"./view":"bWlJ9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/public/icons.svg":"k5TWc"}]},["ik2hV","aenu9"], "aenu9", "parcelRequire94c2")
 
 //# sourceMappingURL=index.e37f48ea.js.map
