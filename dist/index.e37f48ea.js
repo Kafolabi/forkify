@@ -614,9 +614,60 @@ var _addRecipeViewJs = require("./views/addRecipeView.js");
 var _addRecipeViewJsDefault = parcelHelpers.interopDefault(_addRecipeViewJs);
 var _togglerJs = require("./views/toggler.js");
 var _togglerJsDefault = parcelHelpers.interopDefault(_togglerJs);
+var _cardViewJs = require("./views/cardView.js");
+var _cardViewJsDefault = parcelHelpers.interopDefault(_cardViewJs);
 var _regeneratorRuntime = require("regenerator-runtime");
 // https://forkify-api.herokuapp.com/v2
 ///////////////////////////////////////
+// src/js/controller.js
+var _iconsSvg = require("../../public/icons.svg");
+var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
+// Function to replace the SVG placeholder
+const replaceIconPaths = function() {
+    document.querySelectorAll('use[href="[ICONS_PATH]"]').forEach((useElement)=>{
+        const currentHref = useElement.getAttribute('href'); // e.g., "[ICONS_PATH]#icon-search"
+        const iconId = currentHref.split('#')[1]; // e.g., "icon-search"
+        useElement.setAttribute('href', `${(0, _iconsSvgDefault.default)}#${iconId}`); // e.g., "/icons.c5b0f01c.svg#icon-search"
+    });
+};
+const controlCards = function() {
+    const cardData = [
+        {
+            icon: 'icon-search',
+            title: 'SEARCH OVER 1,000,000 RECIPES',
+            description: `
+                Bookmark them, add recipes to your weekly meal planner and
+                select what ingredients you need to buy. They will be waiting
+                for you in your shopping list!`
+        },
+        {
+            icon: 'icon-clock',
+            title: 'TAILORED FOR AFRICANS',
+            description: `Search for hundreds of Nigerian recipes ranging from the
+                sumptuous egusi soup to the much acclaimed jollof rice. We have
+                it all!`
+        },
+        {
+            icon: 'icon-edit',
+            title: 'ADD YOUR FAVORITE RECIPES',
+            description: `Give us an URL of your favorite recipe on the Internet, an URL
+                of its image and some more details. We will keep your dearest
+                recipes safe and handy!`
+        },
+        {
+            icon: 'icon-check',
+            title: 'WEEKLY MEAL PLANNER & SHOPPING LIST',
+            description: `Plan your meals for the next week every Monday and decide on the
+                ingredients to purchase based on a certain recipe. View all in
+                your shopping list!`
+        }
+    ];
+    // Generate markup and render it
+    (0, _cardViewJsDefault.default)._generateMarkup(cardData);
+// cardView.cardsContainer.innerHTML = markup1;
+};
+// Call the controller function when needed
+controlCards();
 const controlRecipes = async function() {
     try {
         const id = window.location.hash.slice(1);
@@ -653,7 +704,7 @@ const controlSearchResults = async function() {
         console.log(err);
     }
 };
-controlSearchResults();
+// controlSearchResults();
 const controlPagination = function(gotoPage) {
     // 1) Render NEW results
     (0, _resultsViewJsDefault.default).render(_modelJs.getSearchResultsPage(gotoPage));
@@ -705,6 +756,8 @@ const controlAddRecipe = async function(newRecipe) {
 };
 const init = function() {
     new (0, _togglerJsDefault.default)((0, _togglerJs.toggleSelector));
+    controlSearchResults();
+    replaceIconPaths(); // Call the function to replace the SVG placeholder
     (0, _bookmarksViewJsDefault.default).addHandlerRender(controlBookmarks);
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
     (0, _recipeViewJsDefault.default).addHandlerUpdateServings(controlServings);
@@ -715,7 +768,7 @@ const init = function() {
 };
 init();
 
-},{"core-js/modules/web.immediate.js":"49tUX","./model.js":"Y4A21","./config.js":"k5Hzs","./views/recipeView.js":"l60JC","./views/searchView.js":"9OQAM","./views/resultsView.js":"cSbZE","./views/paginationView.js":"6z7bi","./views/bookmarksView.js":"4Lqzq","./views/addRecipeView.js":"i6DNj","regenerator-runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/toggler.js":"dk1VK"}],"49tUX":[function(require,module,exports,__globalThis) {
+},{"core-js/modules/web.immediate.js":"49tUX","./model.js":"Y4A21","./config.js":"k5Hzs","./views/recipeView.js":"l60JC","./views/searchView.js":"9OQAM","./views/resultsView.js":"cSbZE","./views/paginationView.js":"6z7bi","./views/bookmarksView.js":"4Lqzq","./views/addRecipeView.js":"i6DNj","regenerator-runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/toggler.js":"dk1VK","./views/cardView.js":"gEib3","../../public/icons.svg":"k5TWc"}],"49tUX":[function(require,module,exports,__globalThis) {
 'use strict';
 // TODO: Remove this module from `core-js@4` since it's split to modules listed below
 require("52e9b3eefbbce1ed");
@@ -2699,18 +2752,22 @@ try {
 },{}],"k5Hzs":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "ICONS_URL", ()=>ICONS_URL);
 parcelHelpers.export(exports, "API_URL", ()=>API_URL);
 parcelHelpers.export(exports, "TIMEOUT_SEC", ()=>TIMEOUT_SEC);
 parcelHelpers.export(exports, "RES_PER_PAGE", ()=>RES_PER_PAGE);
 parcelHelpers.export(exports, "KEY", ()=>KEY);
 parcelHelpers.export(exports, "MODAL_CLOSE_SEC", ()=>MODAL_CLOSE_SEC);
+var _iconsSvg = require("../../public/icons.svg");
+var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
+const ICONS_URL = (0, _iconsSvgDefault.default);
 const API_URL = 'https://forkify-api.herokuapp.com/api/v2/recipes/';
 const TIMEOUT_SEC = 10;
 const RES_PER_PAGE = 10;
 const KEY = 'c4edf8fc-a204-4216-bc47-48202d64bb4f';
 const MODAL_CLOSE_SEC = 2.5;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../public/icons.svg":"k5TWc"}],"gkKU3":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -2739,6 +2796,44 @@ exports.export = function(dest, destName, get) {
         get: get
     });
 };
+
+},{}],"k5TWc":[function(require,module,exports,__globalThis) {
+module.exports = require("f696b75f8cc10440").getBundleURL('hWUTQ') + "icons.da1231b6.svg" + "?" + Date.now();
+
+},{"f696b75f8cc10440":"lgJ39"}],"lgJ39":[function(require,module,exports,__globalThis) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ('' + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return '/';
+}
+function getBaseURL(url) {
+    return ('' + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ('' + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error('Origin not found');
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
 
 },{}],"hGI1E":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -3013,45 +3108,7 @@ class View {
 }
 exports.default = View;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/public/icons.svg":"k5TWc"}],"k5TWc":[function(require,module,exports,__globalThis) {
-module.exports = require("f696b75f8cc10440").getBundleURL('hWUTQ') + "icons.da1231b6.svg" + "?" + Date.now();
-
-},{"f696b75f8cc10440":"lgJ39"}],"lgJ39":[function(require,module,exports,__globalThis) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ('' + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return '/';
-}
-function getBaseURL(url) {
-    return ('' + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ('' + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error('Origin not found');
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"hJO4d":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/public/icons.svg":"k5TWc"}],"hJO4d":[function(require,module,exports,__globalThis) {
 // FRACTY CONVERTS DECIMAL NUMBERS TO FRACTIONS BY ASSUMING THAT TRAILING PATTERNS FROM 10^-2 CONTINUE TO REPEAT
 // The assumption is based on the most standard numbering conventions
 // e.g. 3.51 will convert to 3 51/100 while 3.511 will convert to 3 23/45
@@ -3410,6 +3467,62 @@ module.exports = require("ae1aebeab663e4b1").getBundleURL('hWUTQ') + "forkify-li
 },{"ae1aebeab663e4b1":"lgJ39"}],"6yFMN":[function(require,module,exports,__globalThis) {
 module.exports = require("380e79367ea987ed").getBundleURL('hWUTQ') + "logo.726d37a8.png" + "?" + Date.now();
 
-},{"380e79367ea987ed":"lgJ39"}]},["ik2hV","aenu9"], "aenu9", "parcelRequire94c2")
+},{"380e79367ea987ed":"lgJ39"}],"gEib3":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _iconsSvg = require("/public/icons.svg");
+var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
+var _view = require("./view");
+var _viewDefault = parcelHelpers.interopDefault(_view);
+class CardView {
+    constructor(){
+        this.cardsfirstRow = document.querySelector('#firstCardRow');
+        this.cardssecondRow = document.querySelector('#secondCardRow');
+        console.log(this.cardssecondRow);
+        this.cards = [];
+    }
+    _generateMarkup(cards = []) {
+        const firstRowCards = cards.slice(0, 2);
+        const secondRowCards = cards.slice(2, 4);
+        console.log(secondRowCards);
+        this.cardsfirstRow.innerHTML = '';
+        this.cardssecondRow.innerHTML = '';
+        const firstMarkup = firstRowCards.map((card)=>{
+            return `<div class="card">
+              <div>
+                <svg>
+                  <use href="${0, _iconsSvgDefault.default}#${card.icon}"></use>
+                </svg>
+              </div>
+              <h2 class="card__header">${card.title}</h2>
+              <p> ${card.description}
+              </p>
+            </div>
+            `;
+        }).join('');
+        const secondMarkup = secondRowCards.map((card)=>{
+            return `<div class="card">
+              <div>
+                <svg>
+                  <use href="${0, _iconsSvgDefault.default}#${card.icon}"></use>
+                </svg>
+              </div>
+              <h2 class="card__header">${card.title}</h2>
+              <p> ${card.description}
+              </p>
+            </div>
+            `;
+        }).join('');
+        this.cardsfirstRow.innerHTML = firstMarkup;
+        this.cardssecondRow.innerHTML = secondMarkup;
+        return this.cardsfirstRow.innerHTML + this.cardssecondRow.innerHTML;
+    }
+    clearCards() {
+        this.cardsContainer.innerHTML = '';
+    }
+}
+exports.default = new CardView();
+
+},{"/public/icons.svg":"k5TWc","./view":"bWlJ9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["ik2hV","aenu9"], "aenu9", "parcelRequire94c2")
 
 //# sourceMappingURL=index.e37f48ea.js.map

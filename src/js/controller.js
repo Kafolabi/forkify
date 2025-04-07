@@ -7,6 +7,7 @@ import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
 import ThemeToggle from './views/toggler.js';
+import cardView from './views/cardView.js';
 import { toggleSelector } from './views/toggler.js';
 
 import 'core-js/stable';
@@ -14,6 +15,58 @@ import { async } from 'regenerator-runtime';
 
 // https://forkify-api.herokuapp.com/v2
 ///////////////////////////////////////
+// src/js/controller.js
+import icons from '../../public/icons.svg';
+
+// Function to replace the SVG placeholder
+const replaceIconPaths = function () {
+  document.querySelectorAll('use[href="[ICONS_PATH]"]').forEach(useElement => {
+    const currentHref = useElement.getAttribute('href'); // e.g., "[ICONS_PATH]#icon-search"
+    const iconId = currentHref.split('#')[1]; // e.g., "icon-search"
+    useElement.setAttribute('href', `${icons}#${iconId}`); // e.g., "/icons.c5b0f01c.svg#icon-search"
+  });
+};
+
+const controlCards = function () {
+  const cardData = [
+    {
+      icon: 'icon-search',
+      title: 'SEARCH OVER 1,000,000 RECIPES',
+      description: `
+                Bookmark them, add recipes to your weekly meal planner and
+                select what ingredients you need to buy. They will be waiting
+                for you in your shopping list!`,
+    },
+    {
+      icon: 'icon-clock',
+      title: 'TAILORED FOR AFRICANS',
+      description: `Search for hundreds of Nigerian recipes ranging from the
+                sumptuous egusi soup to the much acclaimed jollof rice. We have
+                it all!`,
+    },
+    {
+      icon: 'icon-edit',
+      title: 'ADD YOUR FAVORITE RECIPES',
+      description: `Give us an URL of your favorite recipe on the Internet, an URL
+                of its image and some more details. We will keep your dearest
+                recipes safe and handy!`,
+    },
+    {
+      icon: 'icon-check',
+      title: 'WEEKLY MEAL PLANNER & SHOPPING LIST',
+      description: `Plan your meals for the next week every Monday and decide on the
+                ingredients to purchase based on a certain recipe. View all in
+                your shopping list!`,
+    },
+  ];
+
+  // Generate markup and render it
+  cardView._generateMarkup(cardData);
+  // cardView.cardsContainer.innerHTML = markup1;
+};
+
+// Call the controller function when needed
+controlCards();
 
 const controlRecipes = async function () {
   try {
@@ -61,7 +114,7 @@ const controlSearchResults = async function () {
     console.log(err);
   }
 };
-controlSearchResults();
+// controlSearchResults();
 
 const controlPagination = function (gotoPage) {
   // 1) Render NEW results
@@ -129,7 +182,8 @@ const controlAddRecipe = async function (newRecipe) {
 
 const init = function () {
   new ThemeToggle(toggleSelector);
-
+  controlSearchResults();
+  replaceIconPaths(); // Call the function to replace the SVG placeholder
   bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
