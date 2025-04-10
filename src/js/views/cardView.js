@@ -1,4 +1,4 @@
-import icons from '/icons.svg';
+import icons from '/public/icons.svg';
 import View from './view';
 
 class CardView {
