@@ -3523,6 +3523,6 @@ class CardView {
 }
 exports.default = new CardView();
 
-},{"./view":"bWlJ9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/public/icons.svg":"k5TWc"}]},["ik2hV","aenu9"], "aenu9", "parcelRequire94c2")
+},{"/public/icons.svg":"k5TWc","./view":"bWlJ9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["ik2hV","aenu9"], "aenu9", "parcelRequire94c2")
 
 //# sourceMappingURL=index.e37f48ea.js.map
