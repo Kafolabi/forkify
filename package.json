@@ -5,7 +5,7 @@
   "default": "index.js",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist && copy public\\icons.svg dist\\"
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "author": "Kolade Afolabi",
   "license": "ISC",
