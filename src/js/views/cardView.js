@@ -8,7 +8,8 @@ class CardView {
     console.log(this.cardssecondRow);
     this.cards = [];
   }
-
+  
+  // This function is used to render the cards in the view
   _generateMarkup(cards = []) {
     const firstRowCards = cards.slice(0, 2);
     const secondRowCards = cards.slice(2, 4);
