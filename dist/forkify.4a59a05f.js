@@ -160,11 +160,11 @@
       });
     }
   }
-})({"k1SIA":[function(require,module,exports,__globalThis) {
+})({"4Icwz":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 50178;
+var HMR_SERVER_PORT = 51225;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -3844,6 +3844,6 @@ class CardView {
 }
 exports.default = new CardView();
 
-},{"./view":"2kjY2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","url:/public/icons.svg":"8r3pW"}],"9t7IB":[function() {},{}]},["k1SIA","7dWZ8"], "7dWZ8", "parcelRequire3a11", {}, "./", "/")
+},{"./view":"2kjY2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","url:/public/icons.svg":"8r3pW"}],"9t7IB":[function() {},{}]},["4Icwz","7dWZ8"], "7dWZ8", "parcelRequire3a11", {}, "./", "/")
 
 //# sourceMappingURL=forkify.4a59a05f.js.map
