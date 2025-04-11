@@ -160,11 +160,11 @@
       });
     }
   }
-})({"5DuvQ":[function(require,module,exports,__globalThis) {
+})({"k1SIA":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 1234;
+var HMR_SERVER_PORT = 50178;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -974,6 +974,7 @@ module.exports = function(exec) {
 'use strict';
 var NATIVE_BIND = require("44e025d030d66023");
 var call = Function.prototype.call;
+// eslint-disable-next-line es/no-function-prototype-bind -- safe
 module.exports = NATIVE_BIND ? call.bind(call) : function() {
     return call.apply(call, arguments);
 };
@@ -1045,6 +1046,7 @@ module.exports = fails(function() {
 var NATIVE_BIND = require("829dd7a4e960cf9e");
 var FunctionPrototype = Function.prototype;
 var call = FunctionPrototype.call;
+// eslint-disable-next-line es/no-function-prototype-bind -- safe
 var uncurryThisWithBind = NATIVE_BIND && FunctionPrototype.bind.bind(call, call);
 module.exports = NATIVE_BIND ? uncurryThisWithBind : function(fn) {
     return function() {
@@ -1302,10 +1304,10 @@ var defineGlobalProperty = require("dfb72a1d809f7b02");
 var SHARED = '__core-js_shared__';
 var store = module.exports = globalThis[SHARED] || defineGlobalProperty(SHARED, {});
 (store.versions || (store.versions = [])).push({
-    version: '3.39.0',
+    version: '3.41.0',
     mode: IS_PURE ? 'pure' : 'global',
-    copyright: "\xa9 2014-2024 Denis Pushkarev (zloirock.ru)",
-    license: 'https://github.com/zloirock/core-js/blob/v3.39.0/LICENSE',
+    copyright: "\xa9 2014-2025 Denis Pushkarev (zloirock.ru)",
+    license: 'https://github.com/zloirock/core-js/blob/v3.41.0/LICENSE',
     source: 'https://github.com/zloirock/core-js'
 });
 
@@ -1961,7 +1963,7 @@ var NATIVE_BIND = require("d07466971ded2aca");
 var FunctionPrototype = Function.prototype;
 var apply = FunctionPrototype.apply;
 var call = FunctionPrototype.call;
-// eslint-disable-next-line es/no-reflect -- safe
+// eslint-disable-next-line es/no-function-prototype-bind, es/no-reflect -- safe
 module.exports = typeof Reflect == 'object' && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function() {
     return call.apply(apply, arguments);
 });
@@ -2455,9 +2457,8 @@ const uploadRecipe = async function(newRecipe) {
             if (state === GenStateExecuting) throw new Error("Generator is already running");
             if (state === GenStateCompleted) {
                 if (method === "throw") throw arg;
-                // Be forgiving, per GeneratorResume behavior specified since ES2015:
-                // ES2015 spec, step 3: https://262.ecma-international.org/6.0/#sec-generatorresume
-                // Latest spec, step 2: https://tc39.es/ecma262/#sec-generatorresume
+                // Be forgiving, per 25.3.3.3.3 of the spec:
+                // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
                 return doneResult();
             }
             context.method = method;
@@ -2511,7 +2512,7 @@ const uploadRecipe = async function(newRecipe) {
         var method = delegate.iterator[methodName];
         if (method === undefined) {
             // A .throw or .return when the delegate iterator has no .throw
-            // method, or a missing .next method, always terminate the
+            // method, or a missing .next mehtod, always terminate the
             // yield* loop.
             context.delegate = null;
             // Note: ["return"] must be used for ES3 parsing compatibility.
@@ -2636,7 +2637,7 @@ const uploadRecipe = async function(newRecipe) {
         };
     };
     function values(iterable) {
-        if (iterable != null) {
+        if (iterable) {
             var iteratorMethod = iterable[iteratorSymbol];
             if (iteratorMethod) return iteratorMethod.call(iterable);
             if (typeof iterable.next === "function") return iterable;
@@ -2654,7 +2655,10 @@ const uploadRecipe = async function(newRecipe) {
                 return next.next = next;
             }
         }
-        throw new TypeError(typeof iterable + " is not iterable");
+        // Return an iterator with no values.
+        return {
+            next: doneResult
+        };
     }
     exports.values = values;
     function doneResult() {
@@ -2934,8 +2938,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _view = require("./view");
 var _viewDefault = parcelHelpers.interopDefault(_view);
-var _fracty = require("fracty");
-var _fractyDefault = parcelHelpers.interopDefault(_fracty);
+var _fractionJs = require("fraction.js");
+var _fractionJsDefault = parcelHelpers.interopDefault(_fractionJs);
 var _iconsSvg = require("/public/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class RecipeView extends (0, _viewDefault.default) {
@@ -3046,7 +3050,7 @@ class RecipeView extends (0, _viewDefault.default) {
         <svg class="recipe__icon">
           <use href="${0, _iconsSvgDefault.default}#icon-check"></use>
         </svg>
-        <div class="recipe__quantity">${ing.quantity ? (0, _fractyDefault.default)(ing.quantity).toString() : ''}</div>
+        <div class="recipe__quantity">${ing.quantity ? new (0, _fractionJsDefault.default)(ing.quantity).toString() : ''}</div>
         <div class="recipe__description">
           <span class="recipe__unit">${ing.unit}</span>
           ${ing.description}
@@ -3057,7 +3061,7 @@ class RecipeView extends (0, _viewDefault.default) {
 }
 exports.default = new RecipeView();
 
-},{"./view":"2kjY2","fracty":"gsPKI","/public/icons.svg":"9t7IB","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"2kjY2":[function(require,module,exports,__globalThis) {
+},{"./view":"2kjY2","/public/icons.svg":"9t7IB","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","fraction.js":"md6n5"}],"2kjY2":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _iconsSvg = require("url:/public/icons.svg");
@@ -3144,102 +3148,382 @@ exports.default = View;
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","url:/public/icons.svg":"8r3pW"}],"8r3pW":[function(require,module,exports,__globalThis) {
 module.exports = module.bundle.resolve("icons.31677648.svg") + "?" + Date.now();
 
-},{}],"gsPKI":[function(require,module,exports,__globalThis) {
-// FRACTY CONVERTS DECIMAL NUMBERS TO FRACTIONS BY ASSUMING THAT TRAILING PATTERNS FROM 10^-2 CONTINUE TO REPEAT
-// The assumption is based on the most standard numbering conventions
-// e.g. 3.51 will convert to 3 51/100 while 3.511 will convert to 3 23/45
-// Throw any number up to 16 digits long at fracty and let fracy do the work.
-// If number is beyond 16 digits fracty will truncate at 15 digits to compensate for roundoff errors created in IEEE 754 Floating Point conversion.
-module.exports = function(number) {
-    let type;
-    if (number < 0) {
-        number = Math.abs(number);
-        type = '-';
-    } else type = '';
-    if (number === undefined) return `Your input was undefined.`;
-    if (isNaN(number)) return `"${number}" is not a number.`;
-    if (number == 9999999999999999) return `${type}9999999999999999`;
-    if (number > 9999999999999999) return `Too many digits in your integer to maintain IEEE 754 Floating Point conversion accuracy.`;
-    if (Number.isInteger(number)) return `${type}${number}`;
-    if (number < .000001) return '0';
-    const numberString = number.toString();
-    const entry = numberString.split('.');
-    let integer = entry[0];
-    let decimal;
-    if (decimal == '0' && integer !== '0') return integer;
-    else if (decimal == '0' && integer == '0') return '0';
-    else if (numberString.length >= 17) decimal = entry[1].slice(0, entry[1].length - 1);
-    else decimal = entry[1];
-    if (decimal == '99' && integer !== '0') return `${integer} 99/100`;
-    else if (decimal == '99' && integer == '0') return `99/100`;
-    else if (1 - parseFloat(`.${decimal}`) < .0011) decimal = '999';
-    if (decimal == undefined) return integer;
-    const decimalRev = decimal.split('').reverse().join(''); //Reverse the string to look for patterns.
-    const patternSearch = /^(\d+)\1{1,2}/; //This greedy regex matches the biggest pattern that starts at the beginning of the string (at the end, in the case of the reversed string). A lazy regex doesn't work because it only identifies subpatterns in cases where subpatterns exist (e.g. '88' in '388388388388'), thus pattern capture must be greedy.
-    let pattern = decimalRev.match(patternSearch); //If there's a pattern, it's full sequence is in [0] of this array and the single unit is in [1] but it may still need to be reduced further.
-    if (pattern && decimal.length > 2) {
-        patternSequence = pattern[0].split('').reverse().join('');
-        endPattern = pattern[1].split('').reverse().join('');
-        if (endPattern.length > 1) {
-            let endPatternArray = endPattern.split('');
-            let testSingleUnit = 1;
-            for(i = 0; i < endPatternArray.length; i++)testSingleUnit /= endPatternArray[0] / endPatternArray[i];
-            if (testSingleUnit === 1) endPattern = endPatternArray[0];
-        }
-        if (endPattern.length > 1 && endPattern.length % 2 === 0) endPattern = parseInt(endPattern.slice(0, endPattern.length / 2), 10) - parseInt(endPattern.slice(endPattern.length / 2, endPattern.length), 10) === 0 ? endPattern.slice(0, endPattern.length / 2) : endPattern;
-        return yesRepeat(decimal, endPattern, patternSequence, integer, type); //Begin calculating the numerator and denominator for decimals that have a pattern.
-    } else return noRepeat(decimal, integer, type); //Begin calculating the numerator and denominator for decimals that don't have a pattern.
-};
-//IF THERE'S A TRAILING PATTERN FRACTY DIVIDES THE INPUT BY ONE SUBTRACTED FROM THE NEAREST BASE 10 NUMBER WITH NUMBER OF ZEROS EQUAL TO THE LENGTH OF THE REPEATED PATTERN (I.E. A SERIES OF 9'S) MULTIPLIED BY THE BASE 10 NUMBER GREATER THAN AND CLOSEST TO THE INPUT.
-function yesRepeat(decimal, endPattern1, patternSequence1, integer, type) {
-    const rep = true; //The numerator repeats.
-    const nonPatternLength = decimal.length - patternSequence1.length >= 1 ? decimal.length - patternSequence1.length : 1; //Does the length of the non pattern segment of the input = 0? If it does, that's incorrect since we know it must equal at least 1, otherwise it's the length of the decimal input minus the length of the full pattern.
-    const decimalMultiplier2 = Math.pow(10, nonPatternLength); //Second multiplier to use.
-    const float = parseFloat(`0.${decimal}`); //Convert the decimal input to a floating point number.
-    const decimalMultiplier1 = Math.pow(10, endPattern1.length); //Find the right multiplier to use for both numerator and denominator, which will later have 1 subtracted from it in the case of the denominator.
-    const numerator = Math.round((float * decimalMultiplier1 - float) * Math.pow(10, nonPatternLength)); //Find the numerator to be used in calculating the fraction that contains a repeating trailing sequence.
-    const denominator = (decimalMultiplier1 - 1) * decimalMultiplier2; //Caluculate the denominator using the equation for repeating trailing sequences.
-    return reduce(numerator, denominator, integer, type, rep); //Further reduce the numerator and denominator.
-}
-//IF THERE'S NO TRAILING PATTERN FRACTY DIVIDES THE INPUT BY THE NEAREST BASE 10 INTEGER GREATER THAN THE NUMERATOR.
-function noRepeat(decimal, integer, type) {
-    const rep = false; //The numerator doesn't repeat.
-    const numerator = parseInt(decimal, 10); //Numerator begins as decimal input converted into an integer.
-    const denominator = Math.pow(10, decimal.length); //Denominator begins as 10 to the power of the length of the numerator.
-    return reduce(numerator, denominator, integer, type, rep); //Reduce the numerator and denominator.
-}
-//FRACTY REDUCES THE FRACTION.
-function reduce(numerator, denominator, integer, type, rep) {
-    const primeNumberArray = [
-        2,
-        3,
-        5
-    ]; //If the numerator isn't from a repeating decimal case, the initialized array of prime numbers will suffice to find the common denominators.
-    if (rep === true) {
-        for(i = 3; i * i <= numerator; i += 2)if (numerator % i === 0) primeNumberArray.push(i);
-    }
-    let j = 0; //Initialize counter over the prime number array for the while loop.
-    let comDenom = 1; //Initialize the common denominator.
-    let num = numerator; //Initialize the numerator.
-    let den = denominator; //Initialize the denominator.
-    while(j <= primeNumberArray.length)if (num % primeNumberArray[j] === 0 && den % primeNumberArray[j] === 0) {
-        comDenom = comDenom * primeNumberArray[j];
-        num = num / primeNumberArray[j];
-        den = den / primeNumberArray[j];
-    } else j++;
-    return returnStrings(den, num, integer, type);
-}
-//FRACTY RETURNS THE REDUCED FRACTION AS A STRING.
-function returnStrings(den, num, integer, type) {
-    if (den === 1 && num === 1) {
-        integer = `${type}${(parseInt(integer) + 1).toString()}`; //Add 1 to the integer and return a string without a fraction.
-        return `${integer}`;
-    } else if (num === 0) return `${type}${integer}`;
-    else if (integer == '0') return `${type}${num}/${den}`;
-    else return `${type}${integer} ${num}/${den}`; //If there's an integer and a fraction return both.
-}
+},{}],"9t7IB":[function() {},{}],"md6n5":[function(require,module,exports,__globalThis) {
+/*
+Fraction.js v5.2.2 3/30/2025
+https://raw.org/article/rational-numbers-in-javascript/
 
-},{}],"9t7IB":[function() {},{}],"kbE4Z":[function(require,module,exports,__globalThis) {
+Copyright (c) 2025, Robert Eisele (https://raw.org/)
+Licensed under the MIT license.
+*/ 'use strict';
+(function(E) {
+    function C() {
+        return Error("Parameters must be integer");
+    }
+    function w() {
+        return Error("Invalid argument");
+    }
+    function A() {
+        return Error("Division by Zero");
+    }
+    function p(a, b) {
+        var d = g, c = h;
+        let f = h;
+        if (void 0 !== a && null !== a) {
+            if (void 0 !== b) {
+                if ("bigint" === typeof a) d = a;
+                else {
+                    if (isNaN(a)) throw w();
+                    if (0 !== a % 1) throw C();
+                    d = BigInt(a);
+                }
+                if ("bigint" === typeof b) c = b;
+                else {
+                    if (isNaN(b)) throw w();
+                    if (0 !== b % 1) throw C();
+                    c = BigInt(b);
+                }
+                f = d * c;
+            } else if ("object" === typeof a) {
+                if ("d" in a && "n" in a) d = BigInt(a.n), c = BigInt(a.d), "s" in a && (d *= BigInt(a.s));
+                else if (0 in a) d = BigInt(a[0]), 1 in a && (c = BigInt(a[1]));
+                else if ("bigint" === typeof a) d = a;
+                else throw w();
+                f = d * c;
+            } else if ("number" === typeof a) {
+                if (isNaN(a)) throw w();
+                0 > a && (f = -h, a = -a);
+                if (0 === a % 1) d = BigInt(a);
+                else {
+                    b = 1;
+                    var k = 0, l = 1, m = 1;
+                    let q = 1;
+                    1 <= a && (b = 10 ** Math.floor(1 + Math.log10(a)), a /= b);
+                    for(; 1E7 >= l && 1E7 >= q;)if (c = (k + m) / (l + q), a === c) {
+                        1E7 >= l + q ? (d = k + m, c = l + q) : q > l ? (d = m, c = q) : (d = k, c = l);
+                        break;
+                    } else a > c ? (k += m, l += q) : (m += k, q += l), 1E7 < l ? (d = m, c = q) : (d = k, c = l);
+                    d = BigInt(d) * BigInt(b);
+                    c = BigInt(c);
+                }
+            } else if ("string" === typeof a) {
+                c = 0;
+                k = b = d = g;
+                l = m = h;
+                a = a.replace(/_/g, "").match(/\d+|./g);
+                if (null === a) throw w();
+                "-" === a[c] ? (f = -h, c++) : "+" === a[c] && c++;
+                if (a.length === c + 1) b = v(a[c++], f);
+                else if ("." === a[c + 1] || "." === a[c]) {
+                    "." !== a[c] && (d = v(a[c++], f));
+                    c++;
+                    if (c + 1 === a.length || "(" === a[c + 1] && ")" === a[c + 3] || "'" === a[c + 1] && "'" === a[c + 3]) b = v(a[c], f), m = r ** BigInt(a[c].length), c++;
+                    if ("(" === a[c] && ")" === a[c + 2] || "'" === a[c] && "'" === a[c + 2]) k = v(a[c + 1], f), l = r ** BigInt(a[c + 1].length) - h, c += 3;
+                } else "/" === a[c + 1] || ":" === a[c + 1] ? (b = v(a[c], f), m = v(a[c + 2], h), c += 3) : "/" === a[c + 3] && " " === a[c + 1] && (d = v(a[c], f), b = v(a[c + 2], f), m = v(a[c + 4], h), c += 5);
+                if (a.length <= c) c = m * l, f = d = k + c * d + l * b;
+                else throw w();
+            } else if ("bigint" === typeof a) f = d = a, c = h;
+            else throw w();
+        }
+        if (c === g) throw A();
+        e.s = f < g ? -h : h;
+        e.n = d < g ? -d : d;
+        e.d = c < g ? -c : c;
+    }
+    function v(a, b) {
+        try {
+            a = BigInt(a);
+        } catch (d) {
+            throw w();
+        }
+        return a * b;
+    }
+    function t(a) {
+        return "bigint" === typeof a ? a : Math.floor(a);
+    }
+    function n(a, b) {
+        if (b === g) throw A();
+        const d = Object.create(u.prototype);
+        d.s = a < g ? -h : h;
+        a = a < g ? -a : a;
+        const c = x(a, b);
+        d.n = a / c;
+        d.d = b / c;
+        return d;
+    }
+    function y(a) {
+        const b = {};
+        let d = a, c = z, f = B - h;
+        for(; f <= d;){
+            for(; d % c === g;)d /= c, b[c] = (b[c] || g) + h;
+            f += h + z * c++;
+        }
+        d !== a ? 1 < d && (b[d] = (b[d] || g) + h) : b[a] = (b[a] || g) + h;
+        return b;
+    }
+    function x(a, b) {
+        if (!a) return b;
+        if (!b) return a;
+        for(;;){
+            a %= b;
+            if (!a) return b;
+            b %= a;
+            if (!b) return a;
+        }
+    }
+    function u(a, b) {
+        p(a, b);
+        if (this instanceof u) a = x(e.d, e.n), this.s = e.s, this.n = e.n / a, this.d = e.d / a;
+        else return n(e.s * e.n, e.d);
+    }
+    "undefined" === typeof BigInt && (BigInt = function(a) {
+        if (isNaN(a)) throw Error("");
+        return a;
+    });
+    const g = BigInt(0), h = BigInt(1), z = BigInt(2), B = BigInt(5), r = BigInt(10), e = {
+        s: h,
+        n: g,
+        d: h
+    };
+    u.prototype = {
+        s: h,
+        n: g,
+        d: h,
+        abs: function() {
+            return n(this.n, this.d);
+        },
+        neg: function() {
+            return n(-this.s * this.n, this.d);
+        },
+        add: function(a, b) {
+            p(a, b);
+            return n(this.s * this.n * e.d + e.s * this.d * e.n, this.d * e.d);
+        },
+        sub: function(a, b) {
+            p(a, b);
+            return n(this.s * this.n * e.d - e.s * this.d * e.n, this.d * e.d);
+        },
+        mul: function(a, b) {
+            p(a, b);
+            return n(this.s * e.s * this.n * e.n, this.d * e.d);
+        },
+        div: function(a, b) {
+            p(a, b);
+            return n(this.s * e.s * this.n * e.d, this.d * e.n);
+        },
+        clone: function() {
+            return n(this.s * this.n, this.d);
+        },
+        mod: function(a, b) {
+            if (void 0 === a) return n(this.s * this.n % this.d, h);
+            p(a, b);
+            if (g === e.n * this.d) throw A();
+            return n(this.s * e.d * this.n % (e.n * this.d), e.d * this.d);
+        },
+        gcd: function(a, b) {
+            p(a, b);
+            return n(x(e.n, this.n) * x(e.d, this.d), e.d * this.d);
+        },
+        lcm: function(a, b) {
+            p(a, b);
+            return e.n === g && this.n === g ? n(g, h) : n(e.n * this.n, x(e.n, this.n) * x(e.d, this.d));
+        },
+        inverse: function() {
+            return n(this.s * this.d, this.n);
+        },
+        pow: function(a, b) {
+            p(a, b);
+            if (e.d === h) return e.s < g ? n((this.s * this.d) ** e.n, this.n ** e.n) : n((this.s * this.n) ** e.n, this.d ** e.n);
+            if (this.s < g) return null;
+            a = y(this.n);
+            b = y(this.d);
+            let d = h, c = h;
+            for(let f in a)if ("1" !== f) {
+                if ("0" === f) {
+                    d = g;
+                    break;
+                }
+                a[f] *= e.n;
+                if (a[f] % e.d === g) a[f] /= e.d;
+                else return null;
+                d *= BigInt(f) ** a[f];
+            }
+            for(let f in b)if ("1" !== f) {
+                b[f] *= e.n;
+                if (b[f] % e.d === g) b[f] /= e.d;
+                else return null;
+                c *= BigInt(f) ** b[f];
+            }
+            return e.s < g ? n(c, d) : n(d, c);
+        },
+        log: function(a, b) {
+            p(a, b);
+            if (this.s <= g || e.s <= g) return null;
+            var d = {};
+            a = y(e.n);
+            const c = y(e.d);
+            b = y(this.n);
+            const f = y(this.d);
+            for(var k in c)a[k] = (a[k] || g) - c[k];
+            for(var l in f)b[l] = (b[l] || g) - f[l];
+            for(var m in a)"1" !== m && (d[m] = !0);
+            for(var q in b)"1" !== q && (d[q] = !0);
+            l = k = null;
+            for(const D in d)if (m = a[D] || g, d = b[D] || g, m === g) {
+                if (d !== g) return null;
+            } else if (q = x(d, m), d /= q, m /= q, null === k && null === l) k = d, l = m;
+            else if (d * l !== k * m) return null;
+            return null !== k && null !== l ? n(k, l) : null;
+        },
+        equals: function(a, b) {
+            p(a, b);
+            return this.s * this.n * e.d === e.s * e.n * this.d;
+        },
+        lt: function(a, b) {
+            p(a, b);
+            return this.s * this.n * e.d < e.s * e.n * this.d;
+        },
+        lte: function(a, b) {
+            p(a, b);
+            return this.s * this.n * e.d <= e.s * e.n * this.d;
+        },
+        gt: function(a, b) {
+            p(a, b);
+            return this.s * this.n * e.d > e.s * e.n * this.d;
+        },
+        gte: function(a, b) {
+            p(a, b);
+            return this.s * this.n * e.d >= e.s * e.n * this.d;
+        },
+        compare: function(a, b) {
+            p(a, b);
+            a = this.s * this.n * e.d - e.s * e.n * this.d;
+            return (g < a) - (a < g);
+        },
+        ceil: function(a) {
+            a = r ** BigInt(a || 0);
+            return n(t(this.s * a * this.n / this.d) + (a * this.n % this.d > g && this.s >= g ? h : g), a);
+        },
+        floor: function(a) {
+            a = r ** BigInt(a || 0);
+            return n(t(this.s * a * this.n / this.d) - (a * this.n % this.d > g && this.s < g ? h : g), a);
+        },
+        round: function(a) {
+            a = r ** BigInt(a || 0);
+            return n(t(this.s * a * this.n / this.d) + this.s * ((this.s >= g ? h : g) + a * this.n % this.d * z > this.d ? h : g), a);
+        },
+        roundTo: function(a, b) {
+            p(a, b);
+            var d = this.n * e.d;
+            a = this.d * e.n;
+            b = d % a;
+            d = t(d / a);
+            b + b >= a && d++;
+            return n(this.s * d * e.n, e.d);
+        },
+        divisible: function(a, b) {
+            p(a, b);
+            return !(!(e.n * this.d) || this.n * e.d % (e.n * this.d));
+        },
+        valueOf: function() {
+            return Number(this.s * this.n) / Number(this.d);
+        },
+        toString: function(a) {
+            let b = this.n, d = this.d;
+            a = a || 15;
+            var c;
+            a: {
+                for(c = d; c % z === g; c /= z);
+                for(; c % B === g; c /= B);
+                if (c === h) c = g;
+                else {
+                    for(var f = r % c, k = 1; f !== h; k++)if (f = f * r % c, 2E3 < k) {
+                        c = g;
+                        break a;
+                    }
+                    c = BigInt(k);
+                }
+            }
+            a: {
+                f = h;
+                k = r;
+                var l = c;
+                let m = h;
+                for(; l > g; k = k * k % d, l >>= h)l & h && (m = m * k % d);
+                k = m;
+                for(l = 0; 300 > l; l++){
+                    if (f === k) {
+                        f = BigInt(l);
+                        break a;
+                    }
+                    f = f * r % d;
+                    k = k * r % d;
+                }
+                f = 0;
+            }
+            k = f;
+            f = this.s < g ? "-" : "";
+            f += t(b / d);
+            (b = b % d * r) && (f += ".");
+            if (c) {
+                for(a = k; a--;)f += t(b / d), b %= d, b *= r;
+                f += "(";
+                for(a = c; a--;)f += t(b / d), b %= d, b *= r;
+                f += ")";
+            } else for(; b && a--;)f += t(b / d), b %= d, b *= r;
+            return f;
+        },
+        toFraction: function(a) {
+            let b = this.n, d = this.d, c = this.s < g ? "-" : "";
+            if (d === h) c += b;
+            else {
+                let f = t(b / d);
+                a && f > g && (c += f, c += " ", b %= d);
+                c = c + b + "/" + d;
+            }
+            return c;
+        },
+        toLatex: function(a) {
+            let b = this.n, d = this.d, c = this.s < g ? "-" : "";
+            if (d === h) c += b;
+            else {
+                let f = t(b / d);
+                a && f > g && (c += f, b %= d);
+                c = c + "\\frac{" + b + "}{" + d;
+                c += "}";
+            }
+            return c;
+        },
+        toContinued: function() {
+            let a = this.n, b = this.d, d = [];
+            do {
+                d.push(t(a / b));
+                let c = a % b;
+                a = b;
+                b = c;
+            }while (a !== h);
+            return d;
+        },
+        simplify: function(a) {
+            a = BigInt(1 / (a || .001) | 0);
+            const b = this.abs(), d = b.toContinued();
+            for(let f = 1; f < d.length; f++){
+                let k = n(d[f - 1], h);
+                for(var c = f - 2; 0 <= c; c--)k = k.inverse().add(d[c]);
+                c = k.sub(b);
+                if (c.n * a < c.d) return k.mul(this.s);
+            }
+            return this;
+        }
+    };
+    "function" === typeof define && define.amd ? define([], function() {
+        return u;
+    }) : (Object.defineProperty(u, "__esModule", {
+        value: !0
+    }), u["default"] = u, u.Fraction = u, module.exports = u);
+})(this);
+
+},{}],"kbE4Z":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class SearchView {
@@ -3560,6 +3844,6 @@ class CardView {
 }
 exports.default = new CardView();
 
-},{"./view":"2kjY2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","url:/public/icons.svg":"8r3pW"}],"9t7IB":[function() {},{}]},["5DuvQ","7dWZ8"], "7dWZ8", "parcelRequire3a11", {}, "./", "/")
+},{"./view":"2kjY2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","url:/public/icons.svg":"8r3pW"}],"9t7IB":[function() {},{}]},["k1SIA","7dWZ8"], "7dWZ8", "parcelRequire3a11", {}, "./", "/")
 
 //# sourceMappingURL=forkify.4a59a05f.js.map
