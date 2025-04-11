@@ -38,7 +38,7 @@ class CardView {
         return `<div class="card">
               <div>
                 <svg>
-                  <use href="/public/icons.svg#${card.icon}"></use>
+                  <use href="${icons}#${card.icon}"></use>
                 </svg>
               </div>
               <h2 class="card__header">${card.title}</h2>

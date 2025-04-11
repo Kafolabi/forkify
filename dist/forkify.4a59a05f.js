@@ -3060,7 +3060,7 @@ exports.default = new RecipeView();
 },{"./view":"2kjY2","fracty":"gsPKI","/public/icons.svg":"9t7IB","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"2kjY2":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _iconsSvg = require("/public/icons.svg");
+var _iconsSvg = require("url:/public/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class View {
     _data;
@@ -3141,7 +3141,10 @@ class View {
 }
 exports.default = View;
 
-},{"/public/icons.svg":"9t7IB","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9t7IB":[function() {},{}],"gsPKI":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","url:/public/icons.svg":"8r3pW"}],"8r3pW":[function(require,module,exports,__globalThis) {
+module.exports = module.bundle.resolve("icons.31677648.svg") + "?" + Date.now();
+
+},{}],"gsPKI":[function(require,module,exports,__globalThis) {
 // FRACTY CONVERTS DECIMAL NUMBERS TO FRACTIONS BY ASSUMING THAT TRAILING PATTERNS FROM 10^-2 CONTINUE TO REPEAT
 // The assumption is based on the most standard numbering conventions
 // e.g. 3.51 will convert to 3 51/100 while 3.511 will convert to 3 23/45
@@ -3538,7 +3541,7 @@ class CardView {
             return `<div class="card">
               <div>
                 <svg>
-                  <use href="/public/icons.svg#${card.icon}"></use>
+                  <use href="${0, _iconsSvgDefault.default}#${card.icon}"></use>
                 </svg>
               </div>
               <h2 class="card__header">${card.title}</h2>
@@ -3557,9 +3560,6 @@ class CardView {
 }
 exports.default = new CardView();
 
-},{"./view":"2kjY2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","url:/public/icons.svg":"8r3pW"}],"8r3pW":[function(require,module,exports,__globalThis) {
-module.exports = module.bundle.resolve("icons.31677648.svg") + "?" + Date.now();
-
-},{}],"9t7IB":[function() {},{}]},["5DuvQ","7dWZ8"], "7dWZ8", "parcelRequire3a11", {}, "./", "/")
+},{"./view":"2kjY2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","url:/public/icons.svg":"8r3pW"}],"9t7IB":[function() {},{}]},["5DuvQ","7dWZ8"], "7dWZ8", "parcelRequire3a11", {}, "./", "/")
 
 //# sourceMappingURL=forkify.4a59a05f.js.map
