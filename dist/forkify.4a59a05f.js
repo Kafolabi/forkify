@@ -160,11 +160,11 @@
       });
     }
   }
-})({"4Icwz":[function(require,module,exports,__globalThis) {
+})({"5DuvQ":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 51225;
+var HMR_SERVER_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -3061,7 +3061,7 @@ class RecipeView extends (0, _viewDefault.default) {
 }
 exports.default = new RecipeView();
 
-},{"./view":"2kjY2","/public/icons.svg":"9t7IB","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","fraction.js":"md6n5"}],"2kjY2":[function(require,module,exports,__globalThis) {
+},{"./view":"2kjY2","fraction.js":"md6n5","/public/icons.svg":"9t7IB","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"2kjY2":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _iconsSvg = require("url:/public/icons.svg");
@@ -3145,10 +3145,10 @@ class View {
 }
 exports.default = View;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","url:/public/icons.svg":"8r3pW"}],"8r3pW":[function(require,module,exports,__globalThis) {
+},{"url:/public/icons.svg":"8r3pW","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"8r3pW":[function(require,module,exports,__globalThis) {
 module.exports = module.bundle.resolve("icons.31677648.svg") + "?" + Date.now();
 
-},{}],"9t7IB":[function() {},{}],"md6n5":[function(require,module,exports,__globalThis) {
+},{}],"md6n5":[function(require,module,exports,__globalThis) {
 /*
 Fraction.js v5.2.2 3/30/2025
 https://raw.org/article/rational-numbers-in-javascript/
@@ -3523,7 +3523,7 @@ Licensed under the MIT license.
     }), u["default"] = u, u.Fraction = u, module.exports = u);
 })(this);
 
-},{}],"kbE4Z":[function(require,module,exports,__globalThis) {
+},{}],"9t7IB":[function() {},{}],"kbE4Z":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class SearchView {
@@ -3844,6 +3844,6 @@ class CardView {
 }
 exports.default = new CardView();
 
-},{"./view":"2kjY2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","url:/public/icons.svg":"8r3pW"}],"9t7IB":[function() {},{}]},["4Icwz","7dWZ8"], "7dWZ8", "parcelRequire3a11", {}, "./", "/")
+},{"url:/public/icons.svg":"8r3pW","./view":"2kjY2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9t7IB":[function() {},{}]},["5DuvQ","7dWZ8"], "7dWZ8", "parcelRequire3a11", {}, "./", "/")
 
 //# sourceMappingURL=forkify.4a59a05f.js.map
