@@ -22,9 +22,8 @@ class CardView {
       .map(card => {
         return `<div class="card">
               <div>
-                <svg>
-                  <use href="${icons}#${card.icon}"></use>
-                </svg>
+               <i class="fas fa-${card.icon}"></i>
+
               </div>
               <h2 class="card__header">${card.title}</h2>
               <p> ${card.description}
@@ -37,9 +36,7 @@ class CardView {
       .map(card => {
         return `<div class="card">
               <div>
-                <svg>
-                  <use href="${icons}#${card.icon}"></use>
-                </svg>
+                <i class="fas fa-${card.icon}"></i>
               </div>
               <h2 class="card__header">${card.title}</h2>
               <p> ${card.description}

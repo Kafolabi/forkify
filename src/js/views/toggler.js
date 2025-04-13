@@ -1,5 +1,5 @@
 export const toggleSelector = '#themeToggle';
-export const icon = 'i';
+export const icon = '.fa-sun';
 export const image = '.header__logo';
 export const lightLogo = new URL('../../img/logo.png', import.meta.url).href; // Update to use lightLogo
 export const darkLogo = new URL('../../img/forkify-light.png', import.meta.url)

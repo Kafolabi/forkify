@@ -194,13 +194,19 @@
   // max-width: 40rem;
   margin: 0 auto;
   padding: 5rem 4rem;
-  // display: flex;
+    // display: flex;
 
-  svg {
-    height: 3rem;
-    width: 3rem;
-    fill: var(--color-primary);
-    transform: translateY(-0.3rem);
+  // svg {
+  //   height: 3rem;
+  //   width: 3rem;
+  //   fill: var(--color-primary);
+  //   transform: translateY(-0.3rem);
+  // }
+
+  i {
+    font-size: 4rem;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
   }
 
   img {
@@ -241,12 +247,5 @@
     padding-bottom: 1rem;
     line-height: 2.5rem;
     opacity: 1 !important;
-  }
-
-  svg {
-    width: 5rem;
-    height: 5rem;
-    // padding-bottom: 1rem;
-    margin-bottom: 1rem;
   }
 }

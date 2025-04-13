@@ -291,11 +291,10 @@ body {
   padding: 5rem 4rem;
 }
 
-.message svg, .error svg {
-  width: 3rem;
-  height: 3rem;
-  fill: var(--color-primary);
-  transform: translateY(-.3rem);
+.message i, .error i {
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+  font-size: 4rem;
 }
 
 .message img, .error img {
@@ -335,12 +334,6 @@ body {
   padding-bottom: 1rem;
   line-height: 2.5rem;
   opacity: 1 !important;
-}
-
-.message svg, .error svg {
-  width: 5rem;
-  height: 5rem;
-  margin-bottom: 1rem;
 }
 
 .header {
@@ -435,11 +428,11 @@ body {
   display: flex;
 }
 
-.nav__btn svg {
-  width: 2.4rem;
-  height: 2.4rem;
-  fill: var(--color-primary);
+.nav__btn i {
+  color: var(--color-primary);
   margin-right: .7rem;
+  font-size: 2.4rem;
+  font-weight: 400;
   transform: translateY(-1px);
 }
 
@@ -754,10 +747,9 @@ body {
 }
 
 .recipe__info-icon {
-  width: 2.35rem;
-  height: 2.35rem;
-  fill: var(--color-primary);
+  color: var(--color-primary);
   margin-right: 1.15rem;
+  font-size: 2.2rem !important;
 }
 
 .recipe__info-data {
@@ -810,11 +802,11 @@ body {
 
 .recipe__icon {
   width: 2rem;
-  height: 2rem;
-  fill: var(--color-primary);
+  color: var(--color-primary);
   flex: none;
   margin-top: .1rem;
   margin-right: 1.1rem;
+  font-size: 2rem;
 }
 
 .recipe__quantity {

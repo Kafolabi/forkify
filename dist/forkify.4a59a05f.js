@@ -704,7 +704,7 @@ const replaceIconPaths = function() {
 const controlCards = function() {
     const cardData = [
         {
-            icon: 'icon-search',
+            icon: 'search',
             title: 'SEARCH OVER 1,000,000 RECIPES',
             description: `
                 Bookmark them, add recipes to your weekly meal planner and
@@ -712,21 +712,21 @@ const controlCards = function() {
                 for you in your shopping list!`
         },
         {
-            icon: 'icon-clock',
+            icon: 'clock',
             title: 'TAILORED FOR AFRICANS',
             description: `Search for hundreds of Nigerian recipes ranging from the
                 sumptuous egusi soup to the much acclaimed jollof rice. We have
                 it all!`
         },
         {
-            icon: 'icon-edit',
+            icon: 'edit',
             title: 'ADD YOUR FAVORITE RECIPES',
             description: `Give us an URL of your favorite recipe on the Internet, an URL
                 of its image and some more details. We will keep your dearest
                 recipes safe and handy!`
         },
         {
-            icon: 'icon-check',
+            icon: 'check',
             title: 'WEEKLY MEAL PLANNER & SHOPPING LIST',
             description: `Plan your meals for the next week every Monday and decide on the
                 ingredients to purchase based on a certain recipe. View all in
@@ -2978,29 +2978,24 @@ class RecipeView extends (0, _viewDefault.default) {
 
       <div class="recipe__details">
         <div class="recipe__info">
-          <svg class="recipe__info-icon">
-            <use href="${0, _iconsSvgDefault.default}#icon-clock"></use>
-          </svg>
+          <i class="recipe__info-icon fa-regular fa-clock"></i>
+
           <span class="recipe__info-data recipe__info-data--minutes">${this._data.cookingTime}</span>
           <span class="recipe__info-text">minutes</span>
         </div>
         <div class="recipe__info">
-          <svg class="recipe__info-icon">
-            <use href="${0, _iconsSvgDefault.default}#icon-users"></use>
-          </svg>
+          <i class="recipe__info-icon fa-regular fa-user"></i>
           <span class="recipe__info-data recipe__info-data--people">${this._data.servings}</span>
           <span class="recipe__info-text">servings</span>
 
-          <div class="recipe__info-buttons">
-            <button class="btn--tiny btn--update-servings" data-update-to="${this._data.servings - 1}">
-              <svg>
-                <use href="${0, _iconsSvgDefault.default}#icon-minus-circle"></use>
-              </svg>
+          <div class="recipe__info-buttons" style="margin-left: 2.5rem">
+            <button class="btn--tiny btn--update-servings" style="margin-right: 1rem;" data-update-to="${this._data.servings - 1}">
+              <i class="recipe__info-icon fa-solid fa-minus-circle"></i>
+
             </button>
             <button class="btn--tiny btn--update-servings" data-update-to="${this._data.servings + 1}">
-              <svg>
-                <use href="${0, _iconsSvgDefault.default}#icon-plus-circle"></use>
-              </svg>
+              <i class="recipe__info-icon fa-solid fa-plus-circle"></i>
+
             </button>
           </div>
         </div>
@@ -3011,9 +3006,8 @@ class RecipeView extends (0, _viewDefault.default) {
           </svg>
         </div>
         <button class="btn--round btn--bookmark">
-          <svg class="">
-            <use href="${0, _iconsSvgDefault.default}#icon-bookmark${this._data.bookmarked ? '-fill' : ''}"></use>
-          </svg>
+          <i class="fa-${this._data.bookmarked ? 'regular' : 'solid'} fa-bookmark" style="font-size: 1.5rem; color: var(--color-on-primary)">
+          </i>
         </button>
       </div>
 
@@ -3047,9 +3041,7 @@ class RecipeView extends (0, _viewDefault.default) {
     _generateMarkupIngredient(ing) {
         return `
       <li class="recipe__ingredient">
-        <svg class="recipe__icon">
-          <use href="${0, _iconsSvgDefault.default}#icon-check"></use>
-        </svg>
+        <i class="fa-solid fa-check recipe__icon"></i>
         <div class="recipe__quantity">${ing.quantity ? new (0, _fractionJsDefault.default)(ing.quantity).toString() : ''}</div>
         <div class="recipe__description">
           <span class="recipe__unit">${ing.unit}</span>
@@ -3733,7 +3725,7 @@ parcelHelpers.export(exports, "image", ()=>image);
 parcelHelpers.export(exports, "lightLogo", ()=>lightLogo);
 parcelHelpers.export(exports, "darkLogo", ()=>darkLogo);
 const toggleSelector = '#themeToggle';
-const icon = 'i';
+const icon = '.fa-sun';
 const image = '.header__logo';
 const lightLogo = new URL(require("6affc3096db3c89f")).href; // Update to use lightLogo
 const darkLogo = new URL(require("90ac09b8637c34cd")).href;
@@ -3811,9 +3803,8 @@ class CardView {
         const firstMarkup = firstRowCards.map((card)=>{
             return `<div class="card">
               <div>
-                <svg>
-                  <use href="${0, _iconsSvgDefault.default}#${card.icon}"></use>
-                </svg>
+               <i class="fas fa-${card.icon}"></i>
+
               </div>
               <h2 class="card__header">${card.title}</h2>
               <p> ${card.description}
@@ -3824,9 +3815,7 @@ class CardView {
         const secondMarkup = secondRowCards.map((card)=>{
             return `<div class="card">
               <div>
-                <svg>
-                  <use href="${0, _iconsSvgDefault.default}#${card.icon}"></use>
-                </svg>
+                <i class="fas fa-${card.icon}"></i>
               </div>
               <h2 class="card__header">${card.title}</h2>
               <p> ${card.description}

@@ -41,37 +41,32 @@ class RecipeView extends View {
 
       <div class="recipe__details">
         <div class="recipe__info">
-          <svg class="recipe__info-icon">
-            <use href="${icons}#icon-clock"></use>
-          </svg>
+          <i class="recipe__info-icon fa-regular fa-clock"></i>
+
           <span class="recipe__info-data recipe__info-data--minutes">${
             this._data.cookingTime
           }</span>
           <span class="recipe__info-text">minutes</span>
         </div>
         <div class="recipe__info">
-          <svg class="recipe__info-icon">
-            <use href="${icons}#icon-users"></use>
-          </svg>
+          <i class="recipe__info-icon fa-regular fa-user"></i>
           <span class="recipe__info-data recipe__info-data--people">${
             this._data.servings
           }</span>
           <span class="recipe__info-text">servings</span>
 
-          <div class="recipe__info-buttons">
-            <button class="btn--tiny btn--update-servings" data-update-to="${
+          <div class="recipe__info-buttons" style="margin-left: 2.5rem">
+            <button class="btn--tiny btn--update-servings" style="margin-right: 1rem;" data-update-to="${
               this._data.servings - 1
             }">
-              <svg>
-                <use href="${icons}#icon-minus-circle"></use>
-              </svg>
+              <i class="recipe__info-icon fa-solid fa-minus-circle"></i>
+
             </button>
             <button class="btn--tiny btn--update-servings" data-update-to="${
               this._data.servings + 1
             }">
-              <svg>
-                <use href="${icons}#icon-plus-circle"></use>
-              </svg>
+              <i class="recipe__info-icon fa-solid fa-plus-circle"></i>
+
             </button>
           </div>
         </div>
@@ -82,11 +77,10 @@ class RecipeView extends View {
           </svg>
         </div>
         <button class="btn--round btn--bookmark">
-          <svg class="">
-            <use href="${icons}#icon-bookmark${
-      this._data.bookmarked ? '-fill' : ''
-    }"></use>
-          </svg>
+          <i class="fa-${
+            this._data.bookmarked ? 'regular' : 'solid'
+          } fa-bookmark" style="font-size: 1.5rem; color: var(--color-on-primary)">
+          </i>
         </button>
       </div>
 
@@ -123,9 +117,7 @@ class RecipeView extends View {
   _generateMarkupIngredient(ing) {
     return `
       <li class="recipe__ingredient">
-        <svg class="recipe__icon">
-          <use href="${icons}#icon-check"></use>
-        </svg>
+        <i class="fa-solid fa-check recipe__icon"></i>
         <div class="recipe__quantity">${
           ing.quantity ? new Fraction(ing.quantity).toString() : ''
         }</div>
