@@ -78,7 +78,7 @@ class RecipeView extends View {
         </div>
         <button class="btn--round btn--bookmark">
           <i class="fa-${
-            this._data.bookmarked ? 'regular' : 'solid'
+            this._data.bookmarked ? 'solid' : 'regular'
           } fa-bookmark" style="font-size: 1.5rem; color: var(--color-on-primary)">
           </i>
         </button>

@@ -3006,7 +3006,7 @@ class RecipeView extends (0, _viewDefault.default) {
           </svg>
         </div>
         <button class="btn--round btn--bookmark">
-          <i class="fa-${this._data.bookmarked ? 'regular' : 'solid'} fa-bookmark" style="font-size: 1.5rem; color: var(--color-on-primary)">
+          <i class="fa-${this._data.bookmarked ? 'solid' : 'regular'} fa-bookmark" style="font-size: 1.5rem; color: var(--color-on-primary)">
           </i>
         </button>
       </div>
@@ -3098,9 +3098,7 @@ class View {
     renderSpinner() {
         const markup = `
     <div class="spinner">
-            <svg>
-              <use href="${(0, _iconsSvgDefault.default)}#icon-loader"></use>
-            </svg>
+            <i class="fa-solid fa-spinner fa-spin"></i>
           </div>
           `;
         this._clear();

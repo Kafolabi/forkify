@@ -269,11 +269,9 @@ body {
   margin: 5rem auto;
 }
 
-.spinner svg {
-  width: 6rem;
-  height: 6rem;
-  fill: var(--color-primary);
-  animation: 2s linear infinite rotate;
+.spinner i {
+  color: var(--color-primary);
+  font-size: 6rem;
 }
 
 @keyframes rotate {

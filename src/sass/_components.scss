@@ -171,11 +171,10 @@
   margin: 5rem auto;
   text-align: center;
 
-  svg {
-    height: 6rem;
-    width: 6rem;
-    fill: var(--color-primary);
-    animation: rotate 2s infinite linear;
+  i {
+    font-size: 6rem;
+    color: var(--color-primary);
+    // animation: rotate 2s infinite linear;
   }
 }
 
@@ -194,7 +193,7 @@
   // max-width: 40rem;
   margin: 0 auto;
   padding: 5rem 4rem;
-    // display: flex;
+  // display: flex;
 
   // svg {
   //   height: 3rem;
