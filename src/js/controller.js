@@ -6,6 +6,7 @@ import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
+import shoppingListView from './views/shoppingListView.js';
 import ThemeToggle from './views/toggler.js';
 import cardView from './views/cardView.js';
 import { toggleSelector } from './views/toggler.js';
@@ -16,16 +17,6 @@ import { async } from 'regenerator-runtime';
 // https://forkify-api.herokuapp.com/v2
 ///////////////////////////////////////
 // src/js/controller.js
-import icons from '../../public/icons.svg';
-
-// Function to replace the SVG placeholder
-const replaceIconPaths = function () {
-  document.querySelectorAll('use[href="[ICONS_PATH]"]').forEach(useElement => {
-    const currentHref = useElement.getAttribute('href'); // e.g., "[ICONS_PATH]#icon-search"
-    const iconId = currentHref.split('#')[1]; // e.g., "icon-search"
-    useElement.setAttribute('href', `${icons}#${iconId}`); // e.g., "/icons.c5b0f01c.svg#icon-search"
-  });
-};
 
 const controlCards = function () {
   const cardData = [
@@ -180,16 +171,27 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
+const controlAddIngredient = function (ingredient) {
+  // Add ingredient to the shopping list
+  model.addToShoppingList(ingredient);
+  shoppingListView.renderShoppingList(model.state.shoppingList);
+};
+
+
 const init = function () {
   new ThemeToggle(toggleSelector);
-  controlSearchResults();
-  replaceIconPaths(); // Call the function to replace the SVG placeholder
+
   bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlAddBookmark);
+  recipeView.addHandlerShoppingList(controlAddIngredient);
+
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
+
+  // restoreShoppingList();
+
 };
 init();
