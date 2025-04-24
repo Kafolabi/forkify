@@ -55,6 +55,19 @@
     font-family: inherit;
     color: var(--color-on-primary);
   }
+
+  
+  &__btn-menu {
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--color-on-primary);
+    padding: 2rem;
+    margin-top: 2rem !important;
+    
+    &:hover {
+      background-color: var(--color-grey--3);
+    }
+  }
 }
 
 .nav {

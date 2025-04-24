@@ -38,8 +38,8 @@
 }
 
 .hidden {
-  visibility: hidden;
-  opacity: 0;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
 .upload {
@@ -97,4 +97,11 @@
     grid-column: 1 / -1;
     justify-self: center;
   }
+}
+
+.fa-check:hover, .fa-trash-can:hover {
+  cursor: pointer;
+}
+
+.upload2 {
 }

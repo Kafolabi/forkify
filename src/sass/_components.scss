@@ -125,26 +125,23 @@
   border: none;
   background: none;
   cursor: pointer;
-
-  svg {
-    height: 100%;
-    width: 100%;
-    fill: var(--color-primary);
-    transition: all 0.3s;
-  }
+  // transform: translateY(3px) scale(1);
+  transition: all 0.2s;
 
   &:focus {
     outline: none;
   }
 
-  &:hover svg {
+  &:hover {
     fill: var(--color-grad-2);
     transform: translateY(-1px);
   }
 
-  &:active svg {
-    fill: var(--color-grad-2);
-    transform: translateY(0);
+  &:active {
+    svg {
+      fill: var(--color-grad-2);
+      transform: translateY(0);
+    }
   }
 
   &:not(:last-child) {
