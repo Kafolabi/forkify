@@ -99,7 +99,6 @@ export const clearShoppingList = function () {
   state.shoppingList = [];
   localStorage.removeItem('shoppingList');
 };
-// clearShoppingList();
 
 export const addToShoppingList = async function (ingredient) {
   let text = ingredient.textContent;
@@ -110,6 +109,11 @@ export const addToShoppingList = async function (ingredient) {
   // Save to localStorage
   persistShoppingList();
   console.log('Shopping list updated in local storage:', state.shoppingList);
+};
+
+export const restoreShoppingList = function () {
+  const storedList = localStorage.getItem('shoppingList');
+  if (storedList) state.shoppingList = JSON.parse(storedList);
 };
 
 export const addBookmark = function (recipe) {
@@ -132,6 +136,14 @@ export const deleteBookmark = function (id) {
 
   persistBookmarks();
 };
+
+export const deleteIngredient = function (id) {
+  // Delete ingredient from shopping list
+  const index = state.shoppingList.findIndex(el => el === id);
+  state.shoppingList.splice(index, 1);
+
+  persistShoppingList();
+};  
 
 const init = function () {
   const storage = localStorage.getItem('bookmarks');

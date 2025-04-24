@@ -171,15 +171,30 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
+const controlDeleteIngredient = function (ingredient) {
+  model.deleteIngredient(ingredient);
+  shoppingListView.renderShoppingList(model.state.shoppingList);
+};
+
 const controlAddIngredient = function (ingredient) {
   // Add ingredient to the shopping list
   model.addToShoppingList(ingredient);
   shoppingListView.renderShoppingList(model.state.shoppingList);
 };
 
+const controlClearIngredient = function () {
+  // Clear the shopping list
+  model.clearShoppingList();
+  shoppingListView.renderShoppingList(model.state.shoppingList);
+};
+
+const controlShoppingList = function () {
+  shoppingListView.renderShoppingList(model.state.shoppingList);
+};
 
 const init = function () {
   new ThemeToggle(toggleSelector);
+  model.restoreShoppingList();
 
   bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(controlRecipes);
@@ -191,7 +206,9 @@ const init = function () {
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
 
-  // restoreShoppingList();
-
+  shoppingListView.addHandlerRender(controlShoppingList);
+  shoppingListView.addHandlerDeleteIngredient(controlDeleteIngredient);
+  shoppingListView.addHandlerDeleteShoppingList(controlClearIngredient);
 };
+
 init();

@@ -817,13 +817,26 @@ const controlAddRecipe = async function(newRecipe) {
         (0, _addRecipeViewJsDefault.default).renderError(err.message);
     }
 };
+const controlDeleteIngredient = function(ingredient) {
+    _modelJs.deleteIngredient(ingredient);
+    (0, _shoppingListViewJsDefault.default).renderShoppingList(_modelJs.state.shoppingList);
+};
 const controlAddIngredient = function(ingredient) {
     // Add ingredient to the shopping list
     _modelJs.addToShoppingList(ingredient);
     (0, _shoppingListViewJsDefault.default).renderShoppingList(_modelJs.state.shoppingList);
 };
+const controlClearIngredient = function() {
+    // Clear the shopping list
+    _modelJs.clearShoppingList();
+    (0, _shoppingListViewJsDefault.default).renderShoppingList(_modelJs.state.shoppingList);
+};
+const controlShoppingList = function() {
+    (0, _shoppingListViewJsDefault.default).renderShoppingList(_modelJs.state.shoppingList);
+};
 const init = function() {
     new (0, _togglerJsDefault.default)((0, _togglerJs.toggleSelector));
+    _modelJs.restoreShoppingList();
     (0, _bookmarksViewJsDefault.default).addHandlerRender(controlBookmarks);
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
     (0, _recipeViewJsDefault.default).addHandlerUpdateServings(controlServings);
@@ -832,7 +845,9 @@ const init = function() {
     (0, _searchViewJsDefault.default).addHandlerSearch(controlSearchResults);
     (0, _paginationViewJsDefault.default).addHandlerClick(controlPagination);
     (0, _addRecipeViewJsDefault.default).addHandlerUpload(controlAddRecipe);
-// restoreShoppingList();
+    (0, _shoppingListViewJsDefault.default).addHandlerRender(controlShoppingList);
+    (0, _shoppingListViewJsDefault.default).addHandlerDeleteIngredient(controlDeleteIngredient);
+    (0, _shoppingListViewJsDefault.default).addHandlerDeleteShoppingList(controlClearIngredient);
 };
 init();
 
@@ -2099,8 +2114,10 @@ parcelHelpers.export(exports, "getSearchResultsPage", ()=>getSearchResultsPage);
 parcelHelpers.export(exports, "updateServings", ()=>updateServings);
 parcelHelpers.export(exports, "clearShoppingList", ()=>clearShoppingList);
 parcelHelpers.export(exports, "addToShoppingList", ()=>addToShoppingList);
+parcelHelpers.export(exports, "restoreShoppingList", ()=>restoreShoppingList);
 parcelHelpers.export(exports, "addBookmark", ()=>addBookmark);
 parcelHelpers.export(exports, "deleteBookmark", ()=>deleteBookmark);
+parcelHelpers.export(exports, "deleteIngredient", ()=>deleteIngredient);
 parcelHelpers.export(exports, "uploadRecipe", ()=>uploadRecipe);
 var _regeneratorRuntime = require("regenerator-runtime");
 var _config = require("./config");
@@ -2199,6 +2216,10 @@ const addToShoppingList = async function(ingredient) {
     persistShoppingList();
     console.log('Shopping list updated in local storage:', state.shoppingList);
 };
+const restoreShoppingList = function() {
+    const storedList = localStorage.getItem('shoppingList');
+    if (storedList) state.shoppingList = JSON.parse(storedList);
+};
 const addBookmark = function(recipe) {
     // Add bookmark
     state.bookmarks.push(recipe);
@@ -2213,6 +2234,12 @@ const deleteBookmark = function(id) {
     // Mark current recipe as NOT bookmark
     if (id === state.recipe.id) state.recipe.bookmarked = false;
     persistBookmarks();
+};
+const deleteIngredient = function(id) {
+    // Delete ingredient from shopping list
+    const index = state.shoppingList.findIndex((el)=>el === id);
+    state.shoppingList.splice(index, 1);
+    persistShoppingList();
 };
 const init = function() {
     const storage = localStorage.getItem('bookmarks');
@@ -3747,73 +3774,71 @@ parcelHelpers.defineInteropFlag(exports);
 var _view = require("./view");
 var _viewDefault = parcelHelpers.interopDefault(_view);
 class ShoppingListView extends (0, _viewDefault.default) {
-    #handlerAttached = false;
-    get _parentElement() {
-        return document.querySelector('.upload2');
-    }
-    get _overlay() {
-        return document.querySelectorAll('.overlay')[1];
-    }
-    get _window() {
-        return document.querySelectorAll('.add-recipe-window')[1];
-    }
-    get _btnOpen() {
-        return document.querySelector('.search__btn-menu');
-    }
+    // Use direct properties instead of getters
+    _parentElement = document.querySelector('.upload2');
+    _overlay = document.querySelectorAll('.overlay')[1];
+    _window = document.querySelectorAll('.add-recipe-window')[1];
+    _btnOpen = document.querySelector('.search__btn-menu');
+    _btnClose = document.querySelectorAll('.btn--close-modal')[1];
+    _iconClose = document.querySelector('.upload2');
     _errorMessage = 'No ingredients found for this recipe. Please try another one!';
     _message = '';
+    constructor(){
+        super();
+        this._addHandlerShowWindow();
+        this._addHandlerHideWindow();
+    }
     toggleWindow() {
-        const overlay = this._overlay;
-        const windowEl = this._window;
-        if (!overlay || !windowEl) {
-            console.warn('toggleWindow failed: overlay or window not found');
-            return;
-        }
-        overlay.classList.toggle('hidden');
-        windowEl.classList.toggle('hidden');
+        console.log('window toggled');
+        this._overlay.classList.toggle('hidden');
+        this._window.classList.toggle('hidden');
     }
     _addHandlerShowWindow() {
-        if (this.#handlerAttached) return;
-        const btn = this._btnOpen;
-        if (!btn) {
+        if (!this._btnOpen) {
             console.warn('Show button not found');
             return;
         }
-        btn.addEventListener('click', this.toggleWindow.bind(this));
-        this.#handlerAttached = true;
+        this._btnOpen.addEventListener('click', this.toggleWindow.bind(this));
         console.log('Handler attached to open button');
     }
+    addHandlerDeleteIngredient(handler) {
+        const parent = this._iconClose;
+        parent.addEventListener('click', function(e) {
+            const ingredient = e.target.closest('.recipe__ingredient');
+            handler(ingredient);
+            const btn = e.target.closest('.recipe__icon');
+            if (!btn) return;
+            console.log('Shopping list deleted');
+        });
+    }
+    addHandlerDeleteShoppingList(handler) {
+        const parent = this._iconClose;
+        parent.addEventListener('click', function(e) {
+            const btn = e.target.closest('.fa-trash-can');
+            if (!btn) return;
+            handler();
+            console.log('Shopping list deleted');
+        });
+    }
     _addHandlerHideWindow() {
-        const overlay = this._overlay;
-        if (!overlay) {
+        if (!this._overlay) {
             console.warn('Overlay not found for closing');
             return;
         }
-        overlay.addEventListener('click', this.toggleWindow.bind(this));
+        this._overlay.addEventListener('click', this.toggleWindow.bind(this));
+        console.log('Handler attached to overlay');
+        // Add event listener to close button
+        if (this._btnClose) {
+            this._btnClose.addEventListener('click', this.toggleWindow.bind(this));
+            console.log('Handler attached to close button');
+        } else console.warn('Close button not found');
     }
-    // renderShoppingList(list) {  
-    //   const parent = this._parentElement;
-    //   if (!parent) {
-    //     console.warn('Parent element not found');
-    //     return;
-    //   }
-    //   const markup =
-    //     `<h1>SHOPPING LIST</h1>` +
-    //     list
-    //       .map(
-    //         item => `
-    //     <li class="recipe__ingredient" style="font-size: 1.6rem !important; padding-top: 2.5rem !important">
-    //       <i class="fa-solid fa-check recipe__icon"></i>
-    //         ${item.textContent}
-    //     </li>`
-    //       )
-    //       .join('');
-    //   parent.innerHTML = markup;
-    //   // Now the DOM is ready, safely attach handlers
-    //   this.#handlerAttached = false; // reset just in case
-    //   this._addHandlerShowWindow();
-    //   this._addHandlerHideWindow();
-    // }
+    addHandlerRender(handler) {
+        // Run on page load
+        window.addEventListener('load', handler);
+        // Run when List button is clicked
+        if (this._btnOpen) this._btnOpen.addEventListener('click', handler);
+    }
     renderShoppingList(list) {
         const parent = this._parentElement;
         if (!parent) {
@@ -3821,19 +3846,14 @@ class ShoppingListView extends (0, _viewDefault.default) {
             return;
         }
         const markup = `<h1>SHOPPING LIST</h1>` + list.map((item)=>{
-            // If it's an object, try to access `textContent`, else treat as string
             const content = typeof item === 'object' ? item.textContent || '' : item;
             return `
-        <li class="recipe__ingredient" style="font-size: 1.6rem !important; padding-top: 2.5rem !important">
-          <i class="fa-solid fa-check recipe__icon"></i>
+        <li class="recipe__ingredient" style="font-size: 1.6rem !important; padding-top: 2rem !important">
+          <i class="fa-solid fa-check recipe__icon" ></i>
           ${content.trim()}
         </li>`;
-        }).join('');
+        }).join('') + `<i class="recipe__icon fa-solid fa-trash-can" style="margin-top: 5rem"></i>`;
         parent.innerHTML = markup;
-        // Reset and reattach handlers
-        this.#handlerAttached = false;
-        this._addHandlerShowWindow();
-        this._addHandlerHideWindow();
     }
     _generateMarkup() {}
 }

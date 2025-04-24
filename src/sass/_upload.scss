@@ -38,8 +38,8 @@
 }
 
 .hidden {
-  visibility: hidden;
-  opacity: 0;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
 .upload {
@@ -99,6 +99,9 @@
   }
 }
 
+.fa-check:hover, .fa-trash-can:hover {
+  cursor: pointer;
+}
+
 .upload2 {
-  
 }

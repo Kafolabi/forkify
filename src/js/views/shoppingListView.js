@@ -1,92 +1,89 @@
 import View from './view';
 
 class ShoppingListView extends View {
-  #handlerAttached = false;
-
-  get _parentElement() {
-    return document.querySelector('.upload2');
-  }
-
-  get _overlay() {
-    return document.querySelectorAll('.overlay')[1];
-  }
-
-  get _window() {
-    return document.querySelectorAll('.add-recipe-window')[1];
-  }
-
-  get _btnOpen() {
-    return document.querySelector('.search__btn-menu');
-  }
+  // Use direct properties instead of getters
+  _parentElement = document.querySelector('.upload2');
+  _overlay = document.querySelectorAll('.overlay')[1];
+  _window = document.querySelectorAll('.add-recipe-window')[1];
+  _btnOpen = document.querySelector('.search__btn-menu');
+  _btnClose = document.querySelectorAll('.btn--close-modal')[1]; // Get the close button for this modal
+  _iconClose = document.querySelector('.upload2');
 
   _errorMessage =
     'No ingredients found for this recipe. Please try another one!';
   _message = '';
 
+  constructor() {
+    super();
+    this._addHandlerShowWindow();
+    this._addHandlerHideWindow();
+  }
+
   toggleWindow() {
-    const overlay = this._overlay;
-    const windowEl = this._window;
-
-    if (!overlay || !windowEl) {
-      console.warn('toggleWindow failed: overlay or window not found');
-      return;
-    }
-
-    overlay.classList.toggle('hidden');
-    windowEl.classList.toggle('hidden');
+    console.log('window toggled');
+    this._overlay.classList.toggle('hidden');
+    this._window.classList.toggle('hidden');
   }
 
   _addHandlerShowWindow() {
-    if (this.#handlerAttached) return;
-
-    const btn = this._btnOpen;
-
-    if (!btn) {
+    if (!this._btnOpen) {
       console.warn('Show button not found');
       return;
     }
 
-    btn.addEventListener('click', this.toggleWindow.bind(this));
-    this.#handlerAttached = true;
+    this._btnOpen.addEventListener('click', this.toggleWindow.bind(this));
     console.log('Handler attached to open button');
   }
 
-  _addHandlerHideWindow() {
-    const overlay = this._overlay;
+  addHandlerDeleteIngredient(handler) {
+    const parent = this._iconClose;
+    parent.addEventListener('click', function (e) {
+      const ingredient = e.target.closest('.recipe__ingredient');
+      handler(ingredient);
 
-    if (!overlay) {
+      const btn = e.target.closest('.recipe__icon');
+      if (!btn) return;
+      console.log('Shopping list deleted');
+    });
+  }
+
+  addHandlerDeleteShoppingList(handler) {
+    const parent = this._iconClose;
+    parent.addEventListener('click', function (e) {
+      const btn = e.target.closest('.fa-trash-can');
+      if (!btn) return;
+      handler();
+      console.log('Shopping list deleted');
+    });
+  }
+
+  _addHandlerHideWindow() {
+    if (!this._overlay) {
       console.warn('Overlay not found for closing');
       return;
     }
 
-    overlay.addEventListener('click', this.toggleWindow.bind(this));
+    this._overlay.addEventListener('click', this.toggleWindow.bind(this));
+    console.log('Handler attached to overlay');
+
+    // Add event listener to close button
+    if (this._btnClose) {
+      this._btnClose.addEventListener('click', this.toggleWindow.bind(this));
+      console.log('Handler attached to close button');
+    } else {
+      console.warn('Close button not found');
+    }
   }
 
-  // renderShoppingList(list) {  
-  //   const parent = this._parentElement;
-  //   if (!parent) {
-  //     console.warn('Parent element not found');
-  //     return;
-  //   }
+  addHandlerRender(handler) {
+    // Run on page load
+    window.addEventListener('load', handler);
 
-  //   const markup =
-  //     `<h1>SHOPPING LIST</h1>` +
-  //     list
-  //       .map(
-  //         item => `
-  //     <li class="recipe__ingredient" style="font-size: 1.6rem !important; padding-top: 2.5rem !important">
-  //       <i class="fa-solid fa-check recipe__icon"></i>
-  //         ${item.textContent}
-  //     </li>`
-  //       )
-  //       .join('');
-  //   parent.innerHTML = markup;
-
-  //   // Now the DOM is ready, safely attach handlers
-  //   this.#handlerAttached = false; // reset just in case
-  //   this._addHandlerShowWindow();
-  //   this._addHandlerHideWindow();
-  // }
+    // Run when List button is clicked
+    if (this._btnOpen) {
+      this._btnOpen.addEventListener('click', handler);
+    }
+  }
 
   renderShoppingList(list) {
     const parent = this._parentElement;
@@ -94,28 +91,24 @@ class ShoppingListView extends View {
       console.warn('Parent element not found');
       return;
     }
-  
+
     const markup =
       `<h1>SHOPPING LIST</h1>` +
       list
         .map(item => {
-          // If it's an object, try to access `textContent`, else treat as string
-          const content = typeof item === 'object' ? item.textContent || '' : item;
+          const content =
+            typeof item === 'object' ? item.textContent || '' : item;
           return `
-        <li class="recipe__ingredient" style="font-size: 1.6rem !important; padding-top: 2.5rem !important">
-          <i class="fa-solid fa-check recipe__icon"></i>
+        <li class="recipe__ingredient" style="font-size: 1.6rem !important; padding-top: 2rem !important">
+          <i class="fa-solid fa-check recipe__icon" ></i>
           ${content.trim()}
         </li>`;
         })
-        .join('');
-  
+        .join('') +
+      `<i class="recipe__icon fa-solid fa-trash-can" style="margin-top: 5rem"></i>`;
+
     parent.innerHTML = markup;
-  
-    // Reset and reattach handlers
-    this.#handlerAttached = false;
-    this._addHandlerShowWindow();
-    this._addHandlerHideWindow();
-  }  
+  }
 
   _generateMarkup() {}
 }
