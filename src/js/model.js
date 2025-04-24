@@ -12,6 +12,7 @@ export const state = {
     resultsPerPage: RES_PER_PAGE,
   },
   bookmarks: [],
+  shoppingList: [],
 };
 
 const createRecipeObject = function (data) {
@@ -89,6 +90,32 @@ const persistBookmarks = function () {
   localStorage.setItem('bookmarks', JSON.stringify(state.bookmarks));
 };
 
+const persistShoppingList = function () {
+  console.log(state.shoppingList);
+  localStorage.setItem('shoppingList', JSON.stringify(state.shoppingList));
+};
+
+export const clearShoppingList = function () {
+  state.shoppingList = [];
+  localStorage.removeItem('shoppingList');
+};
+
+export const addToShoppingList = async function (ingredient) {
+  let text = ingredient.textContent;
+
+  // Store only the string
+  state.shoppingList.push(text);
+
+  // Save to localStorage
+  persistShoppingList();
+  console.log('Shopping list updated in local storage:', state.shoppingList);
+};
+
+export const restoreShoppingList = function () {
+  const storedList = localStorage.getItem('shoppingList');
+  if (storedList) state.shoppingList = JSON.parse(storedList);
+};
+
 export const addBookmark = function (recipe) {
   // Add bookmark
   state.bookmarks.push(recipe);
@@ -110,9 +137,20 @@ export const deleteBookmark = function (id) {
   persistBookmarks();
 };
 
+export const deleteIngredient = function (id) {
+  // Delete ingredient from shopping list
+  const index = state.shoppingList.findIndex(el => el === id);
+  state.shoppingList.splice(index, 1);
+
+  persistShoppingList();
+};  
+
 const init = function () {
   const storage = localStorage.getItem('bookmarks');
   if (storage) state.bookmarks = JSON.parse(storage);
+
+  const shoppingListStorage = localStorage.getItem('shoppingList');
+  if (shoppingListStorage) state.shoppingList = JSON.parse(shoppingListStorage);
 };
 
 init();
@@ -128,7 +166,6 @@ export const uploadRecipe = async function (newRecipe) {
       .filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
       .map(ing => {
         const ingArr = ing[1].split(',').map(el => el.trim());
-        // const ingArr = ing[1].replaceAll(' ', '').split(',');
         if (ingArr.length !== 3)
           throw new Error(
             'Wrong ingredient format! Please use the correct format :)'

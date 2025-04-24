@@ -683,6 +683,8 @@ var _bookmarksViewJs = require("./views/bookmarksView.js");
 var _bookmarksViewJsDefault = parcelHelpers.interopDefault(_bookmarksViewJs);
 var _addRecipeViewJs = require("./views/addRecipeView.js");
 var _addRecipeViewJsDefault = parcelHelpers.interopDefault(_addRecipeViewJs);
+var _shoppingListViewJs = require("./views/shoppingListView.js");
+var _shoppingListViewJsDefault = parcelHelpers.interopDefault(_shoppingListViewJs);
 var _togglerJs = require("./views/toggler.js");
 var _togglerJsDefault = parcelHelpers.interopDefault(_togglerJs);
 var _cardViewJs = require("./views/cardView.js");
@@ -691,16 +693,6 @@ var _regeneratorRuntime = require("regenerator-runtime");
 // https://forkify-api.herokuapp.com/v2
 ///////////////////////////////////////
 // src/js/controller.js
-var _iconsSvg = require("../../public/icons.svg");
-var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
-// Function to replace the SVG placeholder
-const replaceIconPaths = function() {
-    document.querySelectorAll('use[href="[ICONS_PATH]"]').forEach((useElement)=>{
-        const currentHref = useElement.getAttribute('href'); // e.g., "[ICONS_PATH]#icon-search"
-        const iconId = currentHref.split('#')[1]; // e.g., "icon-search"
-        useElement.setAttribute('href', `${(0, _iconsSvgDefault.default)}#${iconId}`); // e.g., "/icons.c5b0f01c.svg#icon-search"
-    });
-};
 const controlCards = function() {
     const cardData = [
         {
@@ -825,21 +817,41 @@ const controlAddRecipe = async function(newRecipe) {
         (0, _addRecipeViewJsDefault.default).renderError(err.message);
     }
 };
+const controlDeleteIngredient = function(ingredient) {
+    _modelJs.deleteIngredient(ingredient);
+    (0, _shoppingListViewJsDefault.default).renderShoppingList(_modelJs.state.shoppingList);
+};
+const controlAddIngredient = function(ingredient) {
+    // Add ingredient to the shopping list
+    _modelJs.addToShoppingList(ingredient);
+    (0, _shoppingListViewJsDefault.default).renderShoppingList(_modelJs.state.shoppingList);
+};
+const controlClearIngredient = function() {
+    // Clear the shopping list
+    _modelJs.clearShoppingList();
+    (0, _shoppingListViewJsDefault.default).renderShoppingList(_modelJs.state.shoppingList);
+};
+const controlShoppingList = function() {
+    (0, _shoppingListViewJsDefault.default).renderShoppingList(_modelJs.state.shoppingList);
+};
 const init = function() {
     new (0, _togglerJsDefault.default)((0, _togglerJs.toggleSelector));
-    controlSearchResults();
-    replaceIconPaths(); // Call the function to replace the SVG placeholder
+    _modelJs.restoreShoppingList();
     (0, _bookmarksViewJsDefault.default).addHandlerRender(controlBookmarks);
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
     (0, _recipeViewJsDefault.default).addHandlerUpdateServings(controlServings);
     (0, _recipeViewJsDefault.default).addHandlerAddBookmark(controlAddBookmark);
+    (0, _recipeViewJsDefault.default).addHandlerShoppingList(controlAddIngredient);
     (0, _searchViewJsDefault.default).addHandlerSearch(controlSearchResults);
     (0, _paginationViewJsDefault.default).addHandlerClick(controlPagination);
     (0, _addRecipeViewJsDefault.default).addHandlerUpload(controlAddRecipe);
+    (0, _shoppingListViewJsDefault.default).addHandlerRender(controlShoppingList);
+    (0, _shoppingListViewJsDefault.default).addHandlerDeleteIngredient(controlDeleteIngredient);
+    (0, _shoppingListViewJsDefault.default).addHandlerDeleteShoppingList(controlClearIngredient);
 };
 init();
 
-},{"core-js/modules/web.immediate.js":"bzsBv","./model.js":"3QBkH","./config.js":"2hPh4","./views/recipeView.js":"3wx5k","./views/searchView.js":"kbE4Z","./views/resultsView.js":"kBQ4r","./views/paginationView.js":"7NIiB","./views/bookmarksView.js":"1qGeA","./views/addRecipeView.js":"8AWnP","./views/toggler.js":"5Xw5W","./views/cardView.js":"3rR7S","regenerator-runtime":"f6ot0","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","../../public/icons.svg":"9t7IB"}],"bzsBv":[function(require,module,exports,__globalThis) {
+},{"core-js/modules/web.immediate.js":"bzsBv","./model.js":"3QBkH","./config.js":"2hPh4","./views/recipeView.js":"3wx5k","./views/searchView.js":"kbE4Z","./views/resultsView.js":"kBQ4r","./views/paginationView.js":"7NIiB","./views/bookmarksView.js":"1qGeA","./views/addRecipeView.js":"8AWnP","./views/toggler.js":"5Xw5W","./views/cardView.js":"3rR7S","regenerator-runtime":"f6ot0","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./views/shoppingListView.js":"buWWT"}],"bzsBv":[function(require,module,exports,__globalThis) {
 'use strict';
 // TODO: Remove this module from `core-js@4` since it's split to modules listed below
 require("52e9b3eefbbce1ed");
@@ -2100,8 +2112,12 @@ parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
 parcelHelpers.export(exports, "loadSearchResults", ()=>loadSearchResults);
 parcelHelpers.export(exports, "getSearchResultsPage", ()=>getSearchResultsPage);
 parcelHelpers.export(exports, "updateServings", ()=>updateServings);
+parcelHelpers.export(exports, "clearShoppingList", ()=>clearShoppingList);
+parcelHelpers.export(exports, "addToShoppingList", ()=>addToShoppingList);
+parcelHelpers.export(exports, "restoreShoppingList", ()=>restoreShoppingList);
 parcelHelpers.export(exports, "addBookmark", ()=>addBookmark);
 parcelHelpers.export(exports, "deleteBookmark", ()=>deleteBookmark);
+parcelHelpers.export(exports, "deleteIngredient", ()=>deleteIngredient);
 parcelHelpers.export(exports, "uploadRecipe", ()=>uploadRecipe);
 var _regeneratorRuntime = require("regenerator-runtime");
 var _config = require("./config");
@@ -2115,7 +2131,8 @@ const state = {
         page: 1,
         resultsPerPage: (0, _config.RES_PER_PAGE)
     },
-    bookmarks: []
+    bookmarks: [],
+    shoppingList: []
 };
 const createRecipeObject = function(data) {
     const { recipe } = data.data;
@@ -2183,6 +2200,26 @@ const updateServings = function(newServings) {
 const persistBookmarks = function() {
     localStorage.setItem('bookmarks', JSON.stringify(state.bookmarks));
 };
+const persistShoppingList = function() {
+    console.log(state.shoppingList);
+    localStorage.setItem('shoppingList', JSON.stringify(state.shoppingList));
+};
+const clearShoppingList = function() {
+    state.shoppingList = [];
+    localStorage.removeItem('shoppingList');
+};
+const addToShoppingList = async function(ingredient) {
+    let text = ingredient.textContent;
+    // Store only the string
+    state.shoppingList.push(text);
+    // Save to localStorage
+    persistShoppingList();
+    console.log('Shopping list updated in local storage:', state.shoppingList);
+};
+const restoreShoppingList = function() {
+    const storedList = localStorage.getItem('shoppingList');
+    if (storedList) state.shoppingList = JSON.parse(storedList);
+};
 const addBookmark = function(recipe) {
     // Add bookmark
     state.bookmarks.push(recipe);
@@ -2198,9 +2235,17 @@ const deleteBookmark = function(id) {
     if (id === state.recipe.id) state.recipe.bookmarked = false;
     persistBookmarks();
 };
+const deleteIngredient = function(id) {
+    // Delete ingredient from shopping list
+    const index = state.shoppingList.findIndex((el)=>el === id);
+    state.shoppingList.splice(index, 1);
+    persistShoppingList();
+};
 const init = function() {
     const storage = localStorage.getItem('bookmarks');
     if (storage) state.bookmarks = JSON.parse(storage);
+    const shoppingListStorage = localStorage.getItem('shoppingList');
+    if (shoppingListStorage) state.shoppingList = JSON.parse(shoppingListStorage);
 };
 init();
 const clearBookmarks = function() {
@@ -2210,7 +2255,6 @@ const uploadRecipe = async function(newRecipe) {
     try {
         const ingredients = Object.entries(newRecipe).filter((entry)=>entry[0].startsWith('ingredient') && entry[1] !== '').map((ing)=>{
             const ingArr = ing[1].split(',').map((el)=>el.trim());
-            // const ingArr = ing[1].replaceAll(' ', '').split(',');
             if (ingArr.length !== 3) throw new Error('Wrong ingredient format! Please use the correct format :)');
             const [quantity, unit, description] = ingArr;
             return {
@@ -2967,6 +3011,16 @@ class RecipeView extends (0, _viewDefault.default) {
             handler();
         });
     }
+    addHandlerShoppingList(handler) {
+        this._parentElement.addEventListener('click', function(e) {
+            const btn = e.target.closest('.recipe__icon');
+            if (!btn) return;
+            const ingredient = btn.closest('.recipe__ingredient');
+            handler(ingredient);
+            // console.log(ingredient)
+            if (!ingredient) return;
+        });
+    }
     _generateMarkup() {
         return `
       <figure class="recipe__fig">
@@ -3041,7 +3095,7 @@ class RecipeView extends (0, _viewDefault.default) {
     _generateMarkupIngredient(ing) {
         return `
       <li class="recipe__ingredient">
-        <i class="fa-solid fa-check recipe__icon"></i>
+        <i class="fa-solid fa-plus btn--tiny recipe__icon"></i>
         <div class="recipe__quantity">${ing.quantity ? new (0, _fractionJsDefault.default)(ing.quantity).toString() : ''}</div>
         <div class="recipe__description">
           <span class="recipe__unit">${ing.unit}</span>
@@ -3831,6 +3885,97 @@ class CardView {
 }
 exports.default = new CardView();
 
-},{"url:/public/icons.svg":"8r3pW","./view":"2kjY2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9t7IB":[function() {},{}]},["5DuvQ","7dWZ8"], "7dWZ8", "parcelRequire3a11", {}, "./", "/")
+},{"url:/public/icons.svg":"8r3pW","./view":"2kjY2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"buWWT":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _view = require("./view");
+var _viewDefault = parcelHelpers.interopDefault(_view);
+class ShoppingListView extends (0, _viewDefault.default) {
+    // Use direct properties instead of getters
+    _parentElement = document.querySelector('.upload2');
+    _overlay = document.querySelectorAll('.overlay')[1];
+    _window = document.querySelectorAll('.add-recipe-window')[1];
+    _btnOpen = document.querySelector('.search__btn-menu');
+    _btnClose = document.querySelectorAll('.btn--close-modal')[1];
+    _iconClose = document.querySelector('.upload2');
+    _errorMessage = 'No ingredients found for this recipe. Please try another one!';
+    _message = '';
+    constructor(){
+        super();
+        this._addHandlerShowWindow();
+        this._addHandlerHideWindow();
+    }
+    toggleWindow() {
+        console.log('window toggled');
+        this._overlay.classList.toggle('hidden');
+        this._window.classList.toggle('hidden');
+    }
+    _addHandlerShowWindow() {
+        if (!this._btnOpen) {
+            console.warn('Show button not found');
+            return;
+        }
+        this._btnOpen.addEventListener('click', this.toggleWindow.bind(this));
+        console.log('Handler attached to open button');
+    }
+    addHandlerDeleteIngredient(handler) {
+        const parent = this._iconClose;
+        parent.addEventListener('click', function(e) {
+            const ingredient = e.target.closest('.recipe__ingredient');
+            handler(ingredient);
+            const btn = e.target.closest('.recipe__icon');
+            if (!btn) return;
+            console.log('Shopping list deleted');
+        });
+    }
+    addHandlerDeleteShoppingList(handler) {
+        const parent = this._iconClose;
+        parent.addEventListener('click', function(e) {
+            const btn = e.target.closest('.fa-trash-can');
+            if (!btn) return;
+            handler();
+            console.log('Shopping list deleted');
+        });
+    }
+    _addHandlerHideWindow() {
+        if (!this._overlay) {
+            console.warn('Overlay not found for closing');
+            return;
+        }
+        this._overlay.addEventListener('click', this.toggleWindow.bind(this));
+        console.log('Handler attached to overlay');
+        // Add event listener to close button
+        if (this._btnClose) {
+            this._btnClose.addEventListener('click', this.toggleWindow.bind(this));
+            console.log('Handler attached to close button');
+        } else console.warn('Close button not found');
+    }
+    addHandlerRender(handler) {
+        // Run on page load
+        window.addEventListener('load', handler);
+        // Run when List button is clicked
+        if (this._btnOpen) this._btnOpen.addEventListener('click', handler);
+    }
+    renderShoppingList(list) {
+        const parent = this._parentElement;
+        if (!parent) {
+            console.warn('Parent element not found');
+            return;
+        }
+        const markup = `<h1>SHOPPING LIST</h1>` + list.map((item)=>{
+            const content = typeof item === 'object' ? item.textContent || '' : item;
+            return `
+        <li class="recipe__ingredient" style="font-size: 1.6rem !important; padding-top: 2rem !important">
+          <i class="fa-solid fa-check recipe__icon" ></i>
+          ${content.trim()}
+        </li>`;
+        }).join('') + `<i class="recipe__icon fa-solid fa-trash-can" style="margin-top: 5rem"></i>`;
+        parent.innerHTML = markup;
+    }
+    _generateMarkup() {}
+}
+exports.default = new ShoppingListView();
+
+},{"./view":"2kjY2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["5DuvQ","7dWZ8"], "7dWZ8", "parcelRequire3a11", {}, "./", "/")
 
 //# sourceMappingURL=forkify.4a59a05f.js.map

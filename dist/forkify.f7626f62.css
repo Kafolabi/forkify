@@ -224,20 +224,14 @@ body {
   border: none;
   width: 2rem;
   height: 2rem;
-}
-
-.btn--tiny svg {
-  width: 100%;
-  height: 100%;
-  fill: var(--color-primary);
-  transition: all .3s;
+  transition: all .2s;
 }
 
 .btn--tiny:focus {
   outline: none;
 }
 
-.btn--tiny:hover svg {
+.btn--tiny:hover {
   fill: var(--color-grad-2);
   transform: translateY(-1px);
 }
@@ -393,6 +387,18 @@ body {
   color: var(--color-on-primary);
   font-family: inherit;
   font-weight: 600;
+}
+
+.search__btn-menu {
+  color: var(--color-on-primary);
+  padding: 2rem;
+  font-family: inherit;
+  font-weight: 600;
+  margin-top: 2rem !important;
+}
+
+.search__btn-menu:hover {
+  background-color: var(--color-grey--3);
 }
 
 .nav {
@@ -869,8 +875,8 @@ body {
 }
 
 .hidden {
-  visibility: hidden;
-  opacity: 0;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
 .upload {
@@ -928,5 +934,9 @@ body {
 .upload__btn {
   grid-column: 1 / -1;
   justify-self: center;
+}
+
+.fa-check:hover, .fa-trash-can:hover {
+  cursor: pointer;
 }
 /*# sourceMappingURL=forkify.f7626f62.css.map */

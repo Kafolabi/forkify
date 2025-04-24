@@ -28,6 +28,18 @@ class RecipeView extends View {
     });
   }
 
+  addHandlerShoppingList(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const btn = e.target.closest('.recipe__icon');
+      if (!btn) return;
+
+      const ingredient = btn.closest('.recipe__ingredient');
+      handler(ingredient);
+      // console.log(ingredient)
+      if (!ingredient) return;
+    });
+  }
+
   _generateMarkup() {
     return `
       <figure class="recipe__fig">
@@ -117,7 +129,7 @@ class RecipeView extends View {
   _generateMarkupIngredient(ing) {
     return `
       <li class="recipe__ingredient">
-        <i class="fa-solid fa-check recipe__icon"></i>
+        <i class="fa-solid fa-plus btn--tiny recipe__icon"></i>
         <div class="recipe__quantity">${
           ing.quantity ? new Fraction(ing.quantity).toString() : ''
         }</div>
