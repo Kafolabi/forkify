@@ -9,10 +9,13 @@
 .container > div {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: 2rem; // Added gap for better spacing
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    gap: 4rem;
+    // flex-wrap: wrap;
+    // gap: 4rem;
+    width: 100%;
   }
 }
+

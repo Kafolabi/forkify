@@ -185,19 +185,12 @@
   }
 }
 
-.message,
-.error {
-  // max-width: 40rem;
-  margin: 0 auto;
+.error,
+.message {
+  max-width: 40rem;
+  display: flex;
+  margin: 0px auto;
   padding: 5rem 4rem;
-  // display: flex;
-
-  // svg {
-  //   height: 3rem;
-  //   width: 3rem;
-  //   fill: var(--color-primary);
-  //   transform: translateY(-0.3rem);
-  // }
 
   i {
     font-size: 4rem;
@@ -212,10 +205,15 @@
   }
 
   p {
-    margin-left: 1.5rem;
-    font-size: 1.5rem;
+    // margin-left: 1.5rem;
+    // font-size: 1.5rem;
+    // font-weight: 600;
+    // opacity: 0.8;
+    // margin-left: 1.5rem;
+    font-size: 1.8rem;
+    line-height: 1.5;
     font-weight: 600;
-    opacity: 0.8;
+    // text-align: center;
   }
 
   .cards {

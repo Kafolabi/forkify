@@ -100,11 +100,12 @@ body {
   overflow: hidden;
 }
 
-@media only screen and (width <= 78.15em) {
+@media only screen and (width <= 37.5em) {
   .container {
     border-radius: 0;
     max-width: 100%;
     margin: 0;
+    display: block;
   }
 }
 
@@ -278,35 +279,36 @@ body {
   }
 }
 
-.message, .error {
+.error, .message {
+  max-width: 40rem;
   margin: 0 auto;
   padding: 5rem 4rem;
+  display: flex;
 }
 
-.message i, .error i {
+.error i, .message i {
   color: var(--color-primary);
   margin-bottom: 2rem;
   font-size: 4rem;
 }
 
-.message img, .error img {
+.error img, .message img {
   width: 5rem;
   height: 5rem;
   color: var(--color-primary);
 }
 
-.message p, .error p {
-  opacity: .8;
-  margin-left: 1.5rem;
-  font-size: 1.5rem;
+.error p, .message p {
+  font-size: 1.8rem;
   font-weight: 600;
+  line-height: 1.5;
 }
 
-.message .cards, .error .cards {
+.error .cards, .message .cards {
   flex: 50%;
 }
 
-.message .card, .error .card {
+.error .card, .message .card {
   text-align: center;
   background-color: var(--color-grey--2);
   border-radius: 1rem;
@@ -319,21 +321,21 @@ body {
 }
 
 @media screen and (width <= 784px) {
-  .message .cards, .error .cards {
+  .error .cards, .message .cards {
     flex-direction: column;
   }
 
-  .message .card, .error .card {
+  .error .card, .message .card {
     margin: 2rem 0;
     width: 100% !important;
   }
 }
 
-.message .card:hover, .error .card:hover {
+.error .card:hover, .message .card:hover {
   transform: translateY(-1rem)scale(1.03);
 }
 
-.message .card__header, .error .card__header {
+.error .card__header, .message .card__header {
   padding-bottom: 1rem;
   line-height: 2.5rem;
   opacity: 1 !important;
@@ -697,8 +699,6 @@ body {
 
 .recipe {
   background-color: var(--color-grey--1);
-  flex: 2;
-  padding: 2rem;
   overflow: hidden;
 }
 
@@ -970,7 +970,7 @@ body {
 @media screen and (width <= 768px) {
   .container > div {
     flex-direction: column;
-    gap: 4rem;
+    width: 100%;
   }
 }
 /*# sourceMappingURL=forkify.f7626f62.css.map */
