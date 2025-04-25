@@ -303,7 +303,7 @@ body {
 }
 
 .message .cards, .error .cards {
-  display: flex;
+  flex: 50%;
 }
 
 .message .card, .error .card {
@@ -658,6 +658,13 @@ body {
   list-style: none;
 }
 
+@media screen and (width <= 784px) {
+  .results {
+    width: 100%;
+    margin: 2rem 0;
+  }
+}
+
 .pagination {
   margin-top: auto;
   padding: 0 3.5rem;
@@ -690,6 +697,9 @@ body {
 
 .recipe {
   background-color: var(--color-grey--1);
+  flex: 2;
+  padding: 2rem;
+  overflow: hidden;
 }
 
 .recipe__fig {
@@ -949,5 +959,18 @@ body {
 
 .fa-check:hover, .fa-trash-can:hover {
   cursor: pointer;
+}
+
+.container > div {
+  flex-direction: row;
+  gap: 2rem;
+  display: flex;
+}
+
+@media screen and (width <= 768px) {
+  .container > div {
+    flex-direction: column;
+    gap: 4rem;
+  }
 }
 /*# sourceMappingURL=forkify.f7626f62.css.map */
