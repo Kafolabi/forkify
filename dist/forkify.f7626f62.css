@@ -318,6 +318,17 @@ body {
   box-shadow: .8rem 1.5rem 2rem #0000001a;
 }
 
+@media screen and (width <= 784px) {
+  .message .cards, .error .cards {
+    flex-direction: column;
+  }
+
+  .message .card, .error .card {
+    margin: 2rem 0;
+    width: 100% !important;
+  }
+}
+
 .message .card:hover, .error .card:hover {
   transform: translateY(-1rem)scale(1.03);
 }

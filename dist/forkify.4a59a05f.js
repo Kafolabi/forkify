@@ -703,26 +703,19 @@ const controlCards = function() {
                 select what ingredients you need to buy. They will be waiting
                 for you in your shopping list!`
         },
-        {
-            icon: 'clock',
-            title: 'TAILORED FOR AFRICANS',
-            description: `Search for hundreds of Nigerian recipes ranging from the
-                sumptuous egusi soup to the much acclaimed jollof rice. We have
-                it all!`
-        },
+        // {
+        //   icon: 'clock',
+        //   title: 'TAILORED FOR AFRICANS',
+        //   description: `Search for hundreds of Nigerian recipes ranging from the
+        //             sumptuous egusi soup to the much acclaimed jollof rice. We have
+        //             it all!`,
+        // },
         {
             icon: 'edit',
             title: 'ADD YOUR FAVORITE RECIPES',
             description: `Give us an URL of your favorite recipe on the Internet, an URL
                 of its image and some more details. We will keep your dearest
                 recipes safe and handy!`
-        },
-        {
-            icon: 'check',
-            title: 'WEEKLY MEAL PLANNER & SHOPPING LIST',
-            description: `Plan your meals for the next week every Monday and decide on the
-                ingredients to purchase based on a certain recipe. View all in
-                your shopping list!`
         }
     ];
     // Generate markup and render it
@@ -3840,19 +3833,13 @@ var _view = require("./view");
 var _viewDefault = parcelHelpers.interopDefault(_view);
 class CardView {
     constructor(){
-        this.cardsfirstRow = document.querySelector('#firstCardRow');
-        this.cardssecondRow = document.querySelector('#secondCardRow');
-        console.log(this.cardssecondRow);
+        this.cardsRow = document.querySelector('#cardsRow');
         this.cards = [];
     }
     // This function is used to render the cards in the view
     _generateMarkup(cards = []) {
-        const firstRowCards = cards.slice(0, 2);
-        const secondRowCards = cards.slice(2, 4);
-        console.log(secondRowCards);
-        this.cardsfirstRow.innerHTML = '';
-        this.cardssecondRow.innerHTML = '';
-        const firstMarkup = firstRowCards.map((card)=>{
+        this.cardsRow.innerHTML = '';
+        const firstMarkup = cards.map((card)=>{
             return `<div class="card">
               <div>
                <i class="fas fa-${card.icon}"></i>
@@ -3864,23 +3851,11 @@ class CardView {
             </div>
             `;
         }).join('');
-        const secondMarkup = secondRowCards.map((card)=>{
-            return `<div class="card">
-              <div>
-                <i class="fas fa-${card.icon}"></i>
-              </div>
-              <h2 class="card__header">${card.title}</h2>
-              <p> ${card.description}
-              </p>
-            </div>
-            `;
-        }).join('');
-        this.cardsfirstRow.innerHTML = firstMarkup;
-        this.cardssecondRow.innerHTML = secondMarkup;
-        return this.cardsfirstRow.innerHTML + this.cardssecondRow.innerHTML;
+        this.cardsRow.innerHTML = firstMarkup;
+        return this.cardsRow.innerHTML;
     }
     clearCards() {
-        this.cardsContainer.innerHTML = '';
+        this.cardsRow.innerHTML = '';
     }
 }
 exports.default = new CardView();
