@@ -7,13 +7,12 @@
 @import 'upload';
 
 .container > div {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-  
-    @media screen and (max-width: 768px) {
-      flex-direction: column;
-      gap: 4rem;
-    }
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 4rem;
   }
-  
+}
