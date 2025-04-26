@@ -100,11 +100,12 @@ body {
   overflow: hidden;
 }
 
-@media only screen and (width <= 78.15em) {
+@media only screen and (width <= 37.5em) {
   .container {
     border-radius: 0;
     max-width: 100%;
     margin: 0;
+    display: block;
   }
 }
 
