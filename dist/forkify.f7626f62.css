@@ -972,17 +972,4 @@ body {
 .fa-check:hover, .fa-trash-can:hover {
   cursor: pointer;
 }
-
-.container > div {
-  flex-direction: row;
-  gap: 2rem;
-  display: flex;
-}
-
-@media screen and (width <= 768px) {
-  .container > div {
-    flex-direction: column;
-    width: 100%;
-  }
-}
 /*# sourceMappingURL=forkify.f7626f62.css.map */

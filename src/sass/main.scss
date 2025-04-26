@@ -6,16 +6,4 @@
 @import 'recipe';
 @import 'upload';
 
-.container > div {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem; // Added gap for better spacing
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-    // flex-wrap: wrap;
-    // gap: 4rem;
-    width: 100%;
-  }
-}
 
