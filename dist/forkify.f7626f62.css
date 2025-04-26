@@ -329,6 +329,19 @@ body {
   opacity: 1 !important;
 }
 
+@media screen and (width <= 480px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    flex: none;
+    width: 90%;
+    margin: 1rem auto;
+  }
+}
+
 .header {
   background-color: var(--color-grey--1);
   grid-area: head;
@@ -801,8 +814,20 @@ body {
   display: grid;
 }
 
+@media screen and (width <= 480px) {
+  .recipe__ingredient-list {
+    display: block;
+  }
+}
+
 .recipe__ingredient {
   display: flex;
+}
+
+@media screen and (width <= 480px) {
+  .recipe__ingredient {
+    margin-bottom: 2rem;
+  }
 }
 
 .recipe__icon {

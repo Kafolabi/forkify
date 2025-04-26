@@ -1,24 +1,16 @@
 import icons from 'url:/public/icons.svg';
 import View from './view';
-
 class CardView {
   constructor() {
-    this.cardsfirstRow = document.querySelector('#firstCardRow');
-    this.cardssecondRow = document.querySelector('#secondCardRow');
-    console.log(this.cardssecondRow);
+    this.cardsRow = document.querySelector('#cardsRow');
     this.cards = [];
   }
 
   // This function is used to render the cards in the view
   _generateMarkup(cards = []) {
-    const firstRowCards = cards.slice(0, 2);
-    const secondRowCards = cards.slice(2, 4);
-    console.log(secondRowCards);
+    this.cardsRow.innerHTML = '';
 
-    this.cardsfirstRow.innerHTML = '';
-    this.cardssecondRow.innerHTML = '';
-
-    const firstMarkup = firstRowCards
+    const firstMarkup = cards
       .map(card => {
         return `<div class="card">
               <div>
@@ -32,28 +24,14 @@ class CardView {
             `;
       })
       .join('');
-    const secondMarkup = secondRowCards
-      .map(card => {
-        return `<div class="card">
-              <div>
-                <i class="fas fa-${card.icon}"></i>
-              </div>
-              <h2 class="card__header">${card.title}</h2>
-              <p> ${card.description}
-              </p>
-            </div>
-            `;
-      })
-      .join('');
 
-    this.cardsfirstRow.innerHTML = firstMarkup;
-    this.cardssecondRow.innerHTML = secondMarkup;
+    this.cardsRow.innerHTML = firstMarkup;
 
-    return this.cardsfirstRow.innerHTML + this.cardssecondRow.innerHTML;
+    return this.cardsRow.innerHTML;
   }
 
   clearCards() {
-    this.cardsContainer.innerHTML = '';
+    this.cardsRow.innerHTML = '';
   }
 }
 

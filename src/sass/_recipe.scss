@@ -131,10 +131,18 @@
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem 3rem;
     list-style: none;
+    
+    @media screen and (max-width: 480px) {
+      display: block; 
+    }
   }
 
   &__ingredient {
     display: flex;
+
+    @media screen and (max-width: 480px) {
+      margin-bottom: 2rem;
+    }
   }
 
   &__icon {

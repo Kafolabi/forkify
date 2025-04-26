@@ -187,17 +187,8 @@
 
 .message,
 .error {
-  // max-width: 40rem;
   margin: 0 auto;
   padding: 5rem 4rem;
-  // display: flex;
-
-  // svg {
-  //   height: 3rem;
-  //   width: 3rem;
-  //   fill: var(--color-primary);
-  //   transform: translateY(-0.3rem);
-  // }
 
   i {
     font-size: 4rem;
@@ -232,7 +223,6 @@
     flex: 50%;
     transition: all 0.3s;
     background-color: var(--color-grey--2);
-    // max-width: 25rem;
   }
 
   .card:hover {
@@ -243,5 +233,18 @@
     padding-bottom: 1rem;
     line-height: 2.5rem;
     opacity: 1 !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    flex: none;
+    width: 90%;
+    margin: 1rem auto;
   }
 }

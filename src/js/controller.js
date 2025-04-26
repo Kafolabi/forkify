@@ -29,25 +29,11 @@ const controlCards = function () {
                 for you in your shopping list!`,
     },
     {
-      icon: 'clock',
-      title: 'TAILORED FOR AFRICANS',
-      description: `Search for hundreds of Nigerian recipes ranging from the
-                sumptuous egusi soup to the much acclaimed jollof rice. We have
-                it all!`,
-    },
-    {
       icon: 'edit',
       title: 'ADD YOUR FAVORITE RECIPES',
       description: `Give us an URL of your favorite recipe on the Internet, an URL
                 of its image and some more details. We will keep your dearest
                 recipes safe and handy!`,
-    },
-    {
-      icon: 'check',
-      title: 'WEEKLY MEAL PLANNER & SHOPPING LIST',
-      description: `Plan your meals for the next week every Monday and decide on the
-                ingredients to purchase based on a certain recipe. View all in
-                your shopping list!`,
     },
   ];
 
