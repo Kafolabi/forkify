@@ -100,12 +100,11 @@ body {
   overflow: hidden;
 }
 
-@media only screen and (width <= 37.5em) {
+@media only screen and (width <= 78.15em) {
   .container {
     border-radius: 0;
     max-width: 100%;
     margin: 0;
-    display: block;
   }
 }
 
@@ -279,36 +278,34 @@ body {
   }
 }
 
-.error, .message {
-  max-width: 40rem;
+.message, .error {
   margin: 0 auto;
   padding: 5rem 4rem;
-  display: flex;
 }
 
-.error i, .message i {
+.message i, .error i {
   color: var(--color-primary);
   margin-bottom: 2rem;
   font-size: 4rem;
 }
 
-.error img, .message img {
+.message img, .error img {
   width: 5rem;
   height: 5rem;
   color: var(--color-primary);
 }
 
-.error p, .message p {
+.message p, .error p {
   font-size: 1.8rem;
   font-weight: 600;
   line-height: 1.5;
 }
 
-.error .cards, .message .cards {
+.message .cards, .error .cards {
   flex: 50%;
 }
 
-.error .card, .message .card {
+.message .card, .error .card {
   text-align: center;
   background-color: var(--color-grey--2);
   border-radius: 1rem;
@@ -321,21 +318,21 @@ body {
 }
 
 @media screen and (width <= 784px) {
-  .error .cards, .message .cards {
+  .message .cards, .error .cards {
     flex-direction: column;
   }
 
-  .error .card, .message .card {
+  .message .card, .error .card {
     margin: 2rem 0;
     width: 100% !important;
   }
 }
 
-.error .card:hover, .message .card:hover {
+.message .card:hover, .error .card:hover {
   transform: translateY(-1rem)scale(1.03);
 }
 
-.error .card__header, .message .card__header {
+.message .card__header, .error .card__header {
   padding-bottom: 1rem;
   line-height: 2.5rem;
   opacity: 1 !important;
