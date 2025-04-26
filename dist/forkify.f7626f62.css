@@ -100,12 +100,11 @@ body {
   overflow: hidden;
 }
 
-@media only screen and (width <= 37.5em) {
+@media only screen and (width <= 78.15em) {
   .container {
     border-radius: 0;
     max-width: 100%;
     margin: 0;
-    display: block;
   }
 }
 
@@ -297,14 +296,13 @@ body {
 }
 
 .message p, .error p {
-  opacity: .8;
-  margin-left: 1.5rem;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
+  line-height: 1.5;
 }
 
 .message .cards, .error .cards {
-  display: flex;
+  flex: 50%;
 }
 
 .message .card, .error .card {
@@ -317,6 +315,17 @@ body {
   line-height: 2.9rem;
   transition: all .3s;
   box-shadow: .8rem 1.5rem 2rem #0000001a;
+}
+
+@media screen and (width <= 784px) {
+  .message .cards, .error .cards {
+    flex-direction: column;
+  }
+
+  .message .card, .error .card {
+    margin: 2rem 0;
+    width: 100% !important;
+  }
 }
 
 .message .card:hover, .error .card:hover {
@@ -661,6 +670,13 @@ body {
   list-style: none;
 }
 
+@media screen and (width <= 784px) {
+  .results {
+    width: 100%;
+    margin: 2rem 0;
+  }
+}
+
 .pagination {
   margin-top: auto;
   padding: 0 3.5rem;
@@ -693,6 +709,7 @@ body {
 
 .recipe {
   background-color: var(--color-grey--1);
+  overflow: hidden;
 }
 
 .recipe__fig {
@@ -964,5 +981,18 @@ body {
 
 .fa-check:hover, .fa-trash-can:hover {
   cursor: pointer;
+}
+
+.container > div {
+  flex-direction: row;
+  gap: 2rem;
+  display: flex;
+}
+
+@media screen and (width <= 768px) {
+  .container > div {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=forkify.f7626f62.css.map */
