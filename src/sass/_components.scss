@@ -203,20 +203,14 @@
   }
 
   p {
-    // margin-left: 1.5rem;
-    // font-size: 1.5rem;
-    // font-weight: 600;
-    // opacity: 0.8;
-    // margin-left: 1.5rem;
-    font-size: 1.8rem;
-    line-height: 1.5;
+    margin-left: 1.5rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    // text-align: center;
+    opacity: 0.8;
   }
 
   .cards {
-    // display: flex;
-    flex: 50%;
+    display: flex;
   }
 
   .card {
@@ -229,16 +223,6 @@
     flex: 50%;
     transition: all 0.3s;
     background-color: var(--color-grey--2);
-  }
-
-  @media screen and (max-width: 784px) {
-    .cards {
-      flex-direction: column;
-    }
-    .card {
-      width: 100% !important;
-      margin: 2rem 0;
-    }
   }
 
   .card:hover {

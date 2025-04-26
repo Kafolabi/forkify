@@ -110,22 +110,18 @@
         </nav>
       </header>
 
-      <div>
-        <div class="search-results">
-          <ul class="results">
-            <div class="message">
-              <!-- <div>
-                <i class="fa-regular fa-smile"></i>
-              </div> -->
-              <!-- <svg> -->
-              <!-- <use href="/icons.svg#icon-smile"></use> -->
-              <!-- </svg> -->
-              <p style="font-size: 1.75rem">
-                Start by searching for a recipe or add some items to your shopping list. Have fun! 😊
-              </p>
-            </div>
+      <div class="search-results">
+        <ul class="results">
+          <div class="message">
+            <!-- <svg> -->
+            <!-- <use href="/icons.svg#icon-smile"></use> -->
+            <!-- </svg> -->
+            <p style="font-size: 1.75rem">
+              Start by searching for a recipe or an ingredient. Have fun! 😊
+            </p>
+          </div>
 
-            <!-- 
+          <!-- 
           <li class="preview">
             <a class="preview__link preview__link--active" href="#23456">
               <figure class="preview__fig">
@@ -143,10 +139,10 @@
             </a>
           </li>
            -->
-          </ul>
+        </ul>
 
-          <div class="pagination">
-            <!-- <button class="btn--inline pagination__btn--prev">
+        <div class="pagination">
+          <!-- <button class="btn--inline pagination__btn--prev">
             <svg class="search__icon">
               <use href="/icons.svg#icon-arrow-left"></use>
             </svg>
@@ -158,26 +154,19 @@
               <use href="/icons.svg#icon-arrow-right"></use>
             </svg>
           </button> -->
-          </div>
-
-          <p class="copyright">
-            &copy; Copyright by
-            <a
-              class="twitter-link"
-              target="_blank"
-              href="https://twitter.com/jonasschmedtman"
-              >Jonas Schmedtmann</a
-            >. Use for learning or your portfolio. Don't use to teach. Don't
-            claim as your own.
-          </p>
         </div>
 
-        <div class="recipe">
-          <div class="message">
-            <div class="cards" id="cardsRow"></div>
-          </div>
-        </div>
-        <!-- </div> -->
+        <p class="copyright">
+          &copy; Copyright by
+          <a
+            class="twitter-link"
+            target="_blank"
+            href="https://twitter.com/jonasschmedtman"
+            >Jonas Schmedtmann</a
+          >. Use for learning or your portfolio. Don't use to teach. Don't claim
+          as your own.
+        </p>
+      </div>
 
       <div class="recipe">
         <div class="message">
@@ -186,6 +175,88 @@
           <!-- <div class="cards" id="secondCardRow"></div> -->
         </div>
       </div>
+    </div>
+
+    <div class="overlay hidden"></div>
+    <div class="add-recipe-window hidden">
+      <button class="btn--close-modal">&times;</button>
+      <form class="upload">
+        <div class="upload__column">
+          <h3 class="upload__heading">Recipe data</h3>
+          <label>Title</label>
+          <input value="" required name="title" type="text" />
+          <label>URL</label>
+          <input value="" required name="sourceUrl" type="text" />
+          <label>Image URL</label>
+          <input value="" required name="image" type="text" />
+          <label>Publisher</label>
+          <input value="" required name="publisher" type="text" />
+          <label>Prep time</label>
+          <input value="" required name="cookingTime" type="number" />
+          <label>Servings</label>
+          <input value="" required name="servings" type="number" />
+        </div>
+
+        <div class="upload__column">
+          <h3 class="upload__heading">Ingredients</h3>
+          <label>Ingredient 1</label>
+          <input
+            value=""
+            type="text"
+            required
+            name="ingredient-1"
+            placeholder="Format: 'Quantity,Unit,Description'"
+          />
+          <label>Ingredient 2</label>
+          <input
+            value=""
+            type="text"
+            name="ingredient-2"
+            placeholder="Format: 'Quantity,Unit,Description'"
+          />
+          <label>Ingredient 3</label>
+          <input
+            value=""
+            type="text"
+            name="ingredient-3"
+            placeholder="Format: 'Quantity,Unit,Description'"
+          />
+          <label>Ingredient 4</label>
+          <input
+            type="text"
+            name="ingredient-4"
+            placeholder="Format: 'Quantity,Unit,Description'"
+          />
+          <label>Ingredient 5</label>
+          <input
+            type="text"
+            name="ingredient-5"
+            placeholder="Format: 'Quantity,Unit,Description'"
+          />
+          <label>Ingredient 6</label>
+          <input
+            type="text"
+            name="ingredient-6"
+            placeholder="Format: 'Quantity,Unit,Description'"
+          />
+        </div>
+
+        <button class="btn upload__btn">
+          <i class="fa fa-cloud-upload"></i>
+          <span>Upload</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- navigation -->
+    <div class="overlay hidden"></div>
+    <div class="add-recipe-window hidden">
+      <button class="btn--close-modal">&times;</button>
+      <form class="upload2">
+        <div class="upload__column">
+          <h3 class="upload__heading">Recipe data</h3>
+        </div>
+      </form>
     </div>
   </body>
 </html>

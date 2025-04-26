@@ -17,6 +17,25 @@ import { async } from 'regenerator-runtime';
 // https://forkify-api.herokuapp.com/v2
 ///////////////////////////////////////
 // src/js/controller.js
+import * as model from './model.js';
+import { MODAL_CLOSE_SEC } from './config.js';
+import recipeView from './views/recipeView.js';
+import searchView from './views/searchView.js';
+import resultsView from './views/resultsView.js';
+import paginationView from './views/paginationView.js';
+import bookmarksView from './views/bookmarksView.js';
+import addRecipeView from './views/addRecipeView.js';
+import shoppingListView from './views/shoppingListView.js';
+import ThemeToggle from './views/toggler.js';
+import cardView from './views/cardView.js';
+import { toggleSelector } from './views/toggler.js';
+
+import 'core-js/stable';
+import { async } from 'regenerator-runtime';
+
+// https://forkify-api.herokuapp.com/v2
+///////////////////////////////////////
+// src/js/controller.js
 
 const controlCards = function () {
   const cardData = [
