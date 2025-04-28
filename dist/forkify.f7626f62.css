@@ -362,6 +362,12 @@ body {
   display: block;
 }
 
+@media only screen and (width <= 600px) {
+  .header__logo {
+    margin-left: .5rem;
+  }
+}
+
 .search {
   background-color: var(--color-grey--2);
   border-radius: 10rem;
