@@ -760,6 +760,12 @@ body {
   display: flex;
 }
 
+@media only screen and (width <= 764px) {
+  .recipe__details {
+    padding: 7.5rem 4rem 3.5rem;
+  }
+}
+
 .recipe__info {
   text-transform: uppercase;
   align-items: center;
