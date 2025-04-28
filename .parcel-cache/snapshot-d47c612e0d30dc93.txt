@@ -8,7 +8,7 @@
 91C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\table\dist\src\drawContent.js133888809370000000 0
 120C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\table\node_modules\json-schema-traverse\spec\.eslintrc.yml133888809350000000 0
 109C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\@swc\helpers\esm\_class_private_field_update.js133888809480000000 0
-53C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist133902628066893668 1
+53C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist133903289012488255 1
 96C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\css-tree\lib\parser\SyntaxError.js133888824690000000 0
 90C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\lightningcss\node\index.d.ts133888809390000000 0
 92C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\eslint\lib\init\config-rule.js133888809450000000 0
@@ -220,7 +220,7 @@
 77C:\Users\Kolad\OneDrive\Documents\coding\forkify\src\sass\_searchResults.scss133901811721976883 0
 109C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\caniuse-lite\data\features\createimagebitmap.js133888809510000000 0
 90C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\features\unescape.js133888809790000000 0
-70C:\Users\Kolad\OneDrive\Documents\coding\forkify\src\sass\_recipe.scss133902628746479774 0
+70C:\Users\Kolad\OneDrive\Documents\coding\forkify\src\sass\_recipe.scss133903289302441770 0
 84C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\tslib\modules\index.js133888809330000000 0
 94C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\cosmiconfig\dist\defaults.js.map133888809400000000 0
 94C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\semver\internal\parse-options.js133888809440000000 0
@@ -1501,7 +1501,7 @@
 105C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\htmlparser2\lib\esm\WritableStream.d.ts.map133888809430000000 0
 96C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\js-yaml\lib\js-yaml\type\binary.js133888809330000000 0
 114C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\table\node_modules\ajv\dist\compile\jtd\serialize.js133888809470000000 0
-72C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\icons.826881a5.svg133902624378485562 0
+72C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\icons.826881a5.svg133903288704286440 0
 80C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\timsort\.npmignore133888809320000000 0
 106C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\@parcel\utils\test\input\sourcemap\inline.js133888809450000000 0
 77C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\uri-js\dist\es5133896600258179110 1
@@ -1806,7 +1806,7 @@
 105C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\features\string\virtual\trim-end.js133888809780000000 0
 116C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\table\node_modules\ajv\dist\vocabularies\core\index.js133888809450000000 0
 94C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\internals\array-group.js133888809470000000 0
-71C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\logo.560cdd8e.png133902624378495556 0
+71C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\logo.560cdd8e.png133903288704366459 0
 107C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\csso\node_modules\css-tree\lib\lexer\match.js133888824690000000 0
 78C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\tslib\tslib.html133888809320000000 0
 108C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\entities\lib\generated\decode-data-html.js.map133888809430000000 0
@@ -1876,7 +1876,7 @@
 88C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\@parcel\node-resolver-core133896600112289734 1
 77C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\text-table\test133896600167575108 1
 92C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\full\regexp\replace.js133888809750000000 0
-78C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.f7626f62.css.map133902628066883790 0
+78C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.f7626f62.css.map133903289012438309 0
 97C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\eslint\lib\rules\no-class-assign.js133888809540000000 0
 132C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\table\node_modules\ajv\dist\refs\json-schema-2020-12\meta\content.json133888809480000000 0
 95C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\htmlparser2\lib\WritableStream.js133888809360000000 0
@@ -3779,7 +3779,7 @@
 99C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\actual\async-disposable-stack133896600578202433 1
 93C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\caniuse-lite\data\regions\TZ.js133888809660000000 0
 92C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\nth-check\lib\esm\parse.js.map133888824650000000 0
-64C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\index.html133902624378485562 0
+64C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\index.html133903288704286440 0
 100C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\posthtml\node_modules\entities\LICENSE133888809310000000 0
 92C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\eslint\lib\rules\complexity.js133888809450000000 0
 105C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\posthtml\node_modules\entities\package.json133888809360000000 0
@@ -7282,7 +7282,7 @@
 112C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\@parcel\core\test\fixtures\custom-format-infer-ext133896600434872446 1
 95C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\stable\number\to-fixed.js133888809770000000 0
 91C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\stable\number\virtual133896600687067441 1
-80C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify-light.133e3978.png133902624378495556 0
+80C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify-light.133e3978.png133903288704296462 0
 107C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\full\string\virtual\to-well-formed.js133888809780000000 0
 100C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\stable\number\virtual\index.js133888809710000000 0
 103C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\stable\number\virtual\to-fixed.js133888809770000000 0
@@ -8874,7 +8874,7 @@
 98C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\features\math\sum-precise.js133888809770000000 0
 100C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\features\math\to-string-tag.js133888809780000000 0
 92C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\features\math\trunc.js133888809790000000 0
-72C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\icons.31677648.svg133902624378485562 0
+72C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\icons.31677648.svg133903288704296462 0
 110C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\caniuse-lite\data\features\font-unicode-range.js133888809580000000 0
 96C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\features\map\delete-all.js133888809590000000 0
 92C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\core-js\features\map\filter.js133888809680000000 0
@@ -10304,7 +10304,7 @@
 91C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\ajv\lib\dot\propertyNames.jst133888809470000000 0
 81C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\ajv\lib\dot\ref.jst133888809470000000 0
 86C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\ajv\lib\dot\required.jst133888809470000000 0
-80C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify-light.3f29e0fd.png133902624378485562 0
+80C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify-light.3f29e0fd.png133903288704606475 0
 89C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\ajv\lib\dot\uniqueItems.jst133888809470000000 0
 86C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\ajv\lib\dot\validate.jst133888809470000000 0
 89C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\ajv\lib\dot\_limitItems.jst133888809460000000 0
@@ -11004,7 +11004,7 @@
 109C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\@parcel\resolver-default\src\DefaultResolver.js133888809330000000 0
 98C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\@parcel\reporter-tracer\package.json133888809340000000 0
 107C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\@parcel\reporter-tracer\src\TracerReporter.js133888809330000000 0
-73C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.4a59a05f.js133902624378495556 0
+73C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.4a59a05f.js133903288705236479 0
 107C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\@parcel\reporter-tracer\lib\TracerReporter.js133888809320000000 0
 97C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\@parcel\reporter-dev-server\LICENSE133888809310000000 0
 102C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\@parcel\reporter-dev-server\package.json133888809430000000 0
@@ -11459,18 +11459,18 @@
 89C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\.bin\update-browserslist-db133888809800000000 0
 93C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\.bin\update-browserslist-db.cmd133888809800000000 0
 93C:\Users\Kolad\OneDrive\Documents\coding\forkify\node_modules\.bin\update-browserslist-db.ps1133888809800000000 0
-74C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\favicon.8b2f57bf.png133902624378485562 0
+74C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\favicon.8b2f57bf.png133903288705196522 0
 74C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\favicon.dd29872e.png133877915697483242 0
 73C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.2c23ed75.js133889263006555048 0
 74C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.33367275.css133889263006500804 0
 78C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.33367275.css.map133889281587654204 0
 77C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.3464ddca.js.map133884999019719411 0
-77C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.4a59a05f.js.map133902624379929434 0
+77C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.4a59a05f.js.map133903288705316484 0
 77C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.778543c3.js.map133899887408946301 0
 73C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.7f947286.js133901811721716933 0
 74C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.8ad53f5f.css133899887408961833 0
 74C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.bbc07c5a.css133901811721816887 0
-74C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.f7626f62.css133902628066853651 0
+74C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\forkify.f7626f62.css133903289012348274 0
 72C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\icons.2cdef74e.svg133889263002756424 0
 72C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\icons.2e3dcc0a.svg133889263002746514 0
 72C:\Users\Kolad\OneDrive\Documents\coding\forkify\dist\icons.35d27858.svg133877915702493547 0

@@ -783,6 +783,12 @@ body {
   font-size: 2.2rem !important;
 }
 
+@media only screen and (width <= 28.12em) {
+  .recipe__info-text {
+    display: none;
+  }
+}
+
 .recipe__info-data {
   margin-right: .5rem;
   font-weight: 700;
