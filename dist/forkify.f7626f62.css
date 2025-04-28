@@ -69,7 +69,7 @@ html {
   font-size: 62.5%;
 }
 
-@media only screen and (width <= 61.25em) {
+@media only screen and (width <= 1128px) {
   html {
     font-size: 50%;
   }
@@ -137,6 +137,12 @@ body {
   padding: 1.5rem 4rem;
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+@media only screen and (width <= 56.25em) {
+  .btn {
+    padding: 1.5rem 1rem;
+  }
 }
 
 .btn svg {
@@ -379,6 +385,13 @@ body {
   font-size: 1.7rem;
 }
 
+@media only screen and (width <= 56.25em) {
+  .search__field {
+    width: auto;
+    max-width: 14rem;
+  }
+}
+
 .search__field:focus {
   outline: none;
 }
@@ -394,6 +407,8 @@ body {
 
   .search__field::placeholder {
     color: var(--color-text-3);
+    opacity: 0;
+    visibility: none;
   }
 }
 
@@ -428,6 +443,12 @@ body {
 
 .nav__item {
   position: relative;
+}
+
+@media only screen and (width <= 600px) {
+  .nav__item {
+    margin-bottom: 1.4rem;
+  }
 }
 
 .nav__btn {
@@ -465,7 +486,7 @@ body {
 .toggle {
   width: 85px;
   height: 43px;
-  margin-top: 3.1rem;
+  margin-top: 2.8rem;
   margin-right: 3rem;
   display: inline-block;
   position: relative;
@@ -556,6 +577,50 @@ body {
   visibility: visible;
   opacity: 1;
   background-color: var(--color-grey--2);
+}
+
+@media only screen and (width <= 600px) {
+  .nav__item0 {
+    position: absolute;
+    left: 2rem;
+    top: 7rem !important;
+  }
+}
+
+@media only screen and (width <= 850px) {
+  .nav__item-active1 {
+    background-color: var(--color-grey--1);
+    z-index: 100;
+    border-radius: 3rem;
+    padding: 1rem .5rem;
+    position: absolute;
+    top: 15rem;
+    right: 2rem;
+  }
+}
+
+@media only screen and (width <= 41.25em) {
+  .nav__item-active1 {
+    top: 10.5rem;
+  }
+}
+
+@media only screen and (width <= 850px) {
+  .nav__item-active2 {
+    background-color: var(--color-grey--1);
+    z-index: 100;
+    border-radius: 3rem;
+    padding: 1rem 1rem 1rem .5rem;
+    position: absolute;
+    top: 15rem;
+    right: 14.98rem;
+  }
+}
+
+@media only screen and (width <= 41.25em) {
+  .nav__item-active2 {
+    top: 10.5rem;
+  }
 }
 
 .preview__link:link, .preview__link:visited {

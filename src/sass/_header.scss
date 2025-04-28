@@ -9,6 +9,10 @@
     margin-left: 4rem;
     height: 4.6rem;
     display: block;
+
+    // @media only screen and (max-width: 650px) {
+    //   display: none;
+    // }
   }
 }
 
@@ -33,6 +37,11 @@
     font-size: 1.7rem;
     width: 30rem;
 
+    @media only screen and (max-width: 56.25em) {
+      width: auto;
+      max-width: 14rem;
+    }
+
     &:focus {
       outline: none;
     }
@@ -46,6 +55,8 @@
 
       &::placeholder {
         color: var(--color-text-3);
+        opacity: 0;
+        visibility: none;
       }
     }
   }
@@ -56,14 +67,13 @@
     color: var(--color-on-primary);
   }
 
-  
   &__btn-menu {
     font-weight: 600;
     font-family: inherit;
     color: var(--color-on-primary);
     padding: 2rem;
     margin-top: 2rem !important;
-    
+
     &:hover {
       background-color: var(--color-grey--3);
     }
@@ -82,6 +92,11 @@
 
   &__item {
     position: relative;
+
+    
+    @media only screen and (max-width: 600px) {
+      margin-bottom: 1.4rem;
+    }
   }
 
   &__btn {
@@ -124,7 +139,7 @@
   display: inline-block;
   width: 85px;
   height: 43px;
-  margin-top: 3.1rem;
+  margin-top: 2.8rem;
   margin-right: 3rem;
 
   i {
@@ -221,3 +236,66 @@
     background-color: var(--color-grey--2);
   }
 }
+
+.nav__item0 {
+  @media only screen and (max-width: 600px) {
+    position: absolute;
+    top: 7rem !important;
+    left: 2rem;
+  }
+}
+.nav__item-active1 {
+  @media only screen and (max-width: 850px) {
+    background-color: var(--color-grey--1);
+    padding: 1rem 0.5rem;
+    border-radius: 3rem;
+    position: absolute;
+    z-index: 100;
+    top: 15rem;
+    right: 2rem;
+    // display: block;
+  }
+
+  @media only screen and (max-width: 41.25em) {
+    top: 10.5rem;
+  }
+}
+
+.nav__item-active2 {
+  @media only screen and (max-width: 850px) {
+    background-color: var(--color-grey--1);
+    padding: 1rem 0.5rem;
+    padding-right: 1rem;
+    border-radius: 3rem;
+    position: absolute;
+    z-index: 100;
+    top: 15rem;
+    right: 14.98rem;
+    // display: block;
+  }
+
+  @media only screen and (max-width: 41.25em) {
+    top: 10.5rem;
+  }
+}
+
+// @media only screen and (max-width: 41.25em) {
+//   .nav__item-active {
+//     background-color: var(--color-grey--1);
+//     padding: 1rem 0.5rem;
+//     border-radius: 3rem;
+//     position: absolute;
+//     z-index: 1000;
+//     right: 2rem;
+//     display: block;
+//   }
+
+//   /* Adjust based on your nav item order */
+//   .nav__item:nth-child(1) .nav__item-active {
+//     top: 5rem; /* Other item */
+//   }
+
+//   .nav__item:nth-child(2) .nav__item-active {
+//     top: 8rem; /* Bookmarks */
+//   }
+// }
