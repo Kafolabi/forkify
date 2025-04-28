@@ -394,7 +394,7 @@ body {
 @media only screen and (width <= 56.25em) {
   .search__field {
     width: auto;
-    max-width: 14rem;
+    max-width: 11rem;
   }
 }
 
